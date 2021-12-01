@@ -19,7 +19,7 @@ To publish or update the model solution, click the "Update Solution" button on t
 
 Select the check boxes to indicate when students will be able to view the solution.
 
-![Update solution](https://replit.com/@util/replit-docs#static/images/teamsForEducation/model-solutions/update_solution.gif)
+![Update solution](/images/teamsForEducation/model-solutions/update_solution.gif)
 
 ### Updating and Referencing Model Solutions
 
