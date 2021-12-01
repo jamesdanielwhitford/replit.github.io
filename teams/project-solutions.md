@@ -2,6 +2,11 @@
 
 Teachers may create project solutions to reference and provide students with solution code once they have completed the project or the project due date has passed. 
 
+<a href="https://www.loom.com/share/43c375a7ddca408eb72a3675d4304f7e">
+    <p>Project Solutions - Watch Video</p>
+    <img style="max-width:300px;" src="https://cdn.loom.com/sessions/thumbnails/43c375a7ddca408eb72a3675d4304f7e-with-play.gif">
+  </a>
+
 ### Creating project solutions 
 To create a project solution, click on the three dots to the right of a Team Project and select "Create Solution".
 ![Create solution](/images/teamsForEducation/model-solutions/create_solution.gif)
