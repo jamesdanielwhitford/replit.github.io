@@ -1,11 +1,6 @@
 # Model Solutions
 
-Teachers may duplicate Team Project templates to create project solutions that are hidden from students until:
-  - Student submits the project
-  - Student passes all tests
-  - After the project due date
-
-![Model solution reveal settings](/images/teamsForEducation/model-solutions/update_solution_status.png)
+Teachers may create model solutions to reference and provide students with solution code once they have completed the project or the project due date has passed. 
 
 ### Creating Model Solutions 
 To create a model solution, click on the three dots to the right of a Team Project and select "Create Solution".
@@ -21,6 +16,13 @@ Select the check boxes to indicate when students will be able to view the soluti
 
 ![Update solution](/images/teamsForEducation/model-solutions/update_solution.gif)
 
+Model solutions are hidden from students until:
+  - student submits the project
+  - student passes all tests
+  - after the project due date
+
+![Model solution reveal settings](/images/teamsForEducation/model-solutions/update_solution_status.png)
+
 ### Updating and Referencing Model Solutions
 
 To update or review a model solution, click again on the three dots to the right of the Team Project and select "Update Solution". 
@@ -28,6 +30,8 @@ To update or review a model solution, click again on the three dots to the right
 Edit the model solution code and click "Update Solution" and "Save" to update the code students will see. 
 
 ### Student View
-Once the solution is made available to students, they will be able to fork the solution. 
+Once the solution is made available to students, they will be able to fork and view the solution.
+
+The solution will remain in a separate repl from their project submission. 
 
 ![Student view of model solution](/images/teamsForEducation/model-solutions/solution_student_view.png)
