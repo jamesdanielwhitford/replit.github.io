@@ -1,6 +1,6 @@
 # Creating projects and assignments
 
-**Team Projects** are repls that teachers create with starter code, instructions, and materials. When starting a Team Project, students duplicate the starter code and files into their own private repl. 
+**Team Projects** are projects and assignments that teachers can set up with starter code, instructions, and materials for their students. When starting a Team Project, students duplicate their own, private versions of the Team Projects to edit and customize freely.
 
 *Team Projects are private by default and are visible and editable only by the teacher and each individual student or student group.* 
 
