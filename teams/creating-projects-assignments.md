@@ -1,8 +1,15 @@
 # Creating projects and assignments
 
-Teams for Education include both Team Projects and Team Repls. 
+**Team Projects** are repls that teachers create with starter code, instructions, and materials. When starting a Team Project, students duplicate the starter code and files into their own private repl. 
 
-* **Team Projects** are visible and editable only by the teacher and each individual student or student group. These are great for assignments and group projects in which each student/group needs to work independently. 
+*Team Projects are private by default and are visible and editable only by the teacher and each individual student or student group.* 
+
+>**Please note that Team Repls were deprecated in October 2021.**
+* If you'd like to create private repls to store solutions, we recommend using the [Project Solutions tool](https://docs.replit.com/teams/project-solutions).
+* You can also store notes and demos as unpublished Team Projects. Unpublished projects are not visible to your students at all.
+* Use the [Curriculum Authoring tool](https://docs.replit.com/teams/lesson-authoring) to write read-only instructions for your students to follow as well as admin-only lesson plans where you can stash your class notes.
+* You can also convert repls from your personal account into Team Projects using [this workflow](https://docs.replit.com/teams/repls-to-team-projects).
+* If you still have questions or need support, please contact us at [education@replit.com](mailto:education@replit.com).
 
 ## Creating Team Projects
 From your team dashboard, create a new project.
