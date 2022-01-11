@@ -57,6 +57,8 @@ The exact steps will vary between services. Here's an example of how it might lo
 
 ![screenshot of Cloudflare cname instructions](/images/repls/cloudflare-setup-custom-domain.png)
 
+**Note: Make sure the CNAME record is not proxied and is set to "DNS only" (the cloud icon should not be orange)**
+
 It may take some time for the DNS record to be updated. Once connected, click the big green button to finish and your domain should be linked!
 
 You can unlink your domain at any time by clicking on the pencil icon and clicking "Unlink".
