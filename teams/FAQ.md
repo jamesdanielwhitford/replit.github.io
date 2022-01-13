@@ -7,7 +7,7 @@
 
 ##### How do I manage team members in a team?
 
-You can [invite teachers and students](https://docs.replit.com/teams/inviting-teachers-students) to a team. Additionally, you can[change user roles] (https://docs.replit.com/teams/assigning-user-roles) for teachers in order for them to have admin access to the subscription to create their own teams, create projects, etc.
+You can [invite teachers and students](https://docs.replit.com/teams/inviting-teachers-students) to a team. Additionally, you can [change user roles](https://docs.replit.com/teams/assigning-user-roles) for teachers in order for them to have admin access to the subscription to create their own teams, create projects, etc.
 
 ##### How do I create a team project?
 
