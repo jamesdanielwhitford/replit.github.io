@@ -22,7 +22,7 @@ From your team dashboard, create a new project.
 
 ### Publishing
 
-When you are done editing your project and it is ready to be published, click "Publish project" from the IDE.
+When you are done editing your project and it is ready to be published, click "Publish project" from the IDE. Once published, your project will be viewable and editable by all members assigned to that project. 
 
 ![Project publish button](/images/teamsForEducation/project-publish-button.png)
 
