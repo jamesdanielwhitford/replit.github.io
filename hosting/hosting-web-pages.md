@@ -83,13 +83,9 @@ Click `Save.`
 
 7. Go back to Replit and click `next.` After some time, a LINK DOMAIN button should appear. Click it and you have successfully linked your domain.
 
-
-*Edit: On your first try, you may get a `525 SSL Handshake` error. If you do, be patient, wait a bit, and reload. It takes a bit to update.*
-
+*On your first try, you may get a `525 SSL Handshake` error. If you do, be patient, wait a bit, and reload. It takes a bit to update.*
 
 *Note: Make sure the CNAME record is not proxied and is set to "DNS only" (the cloud icon should **not** be orange)*
-
-**Note: Make sure the CNAME record is not proxied and is set to "DNS only" (the cloud icon should not be orange)**
 
 It may take some time for the DNS record to be updated. Once connected, click the big green button to finish and your domain should be linked!
 
