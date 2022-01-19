@@ -205,7 +205,7 @@
         "name": "Exporting Student Projects",
         "slug": "exporting-student-submissions"
       },
-      
+
        {
         "name": "Curriculum Hub",
         "slug": "curriculum-hub"
@@ -443,6 +443,10 @@
       {
         "name": "Physics playground with Kaboom.js",
         "slug": "36-physics-playground-with-kaboom"
+      },
+      {
+        "name": "Breakout with Kaboom.js",
+        "slug": "37-build-breakout-with-kaboom"
       },
       {
         "name": "Pinboard project part 1: HTML & CSS",
