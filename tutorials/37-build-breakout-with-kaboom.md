@@ -1,29 +1,33 @@
-# Building a Block Breaking Game with Kaboom on Replit
+# Building a block-breaking game with Kaboom.js
 
 In this tutorial, we'll use the Kaboom framework to develop a simple block-breaking game, similar to classics like Atari's *Breakout* and Taito's *Arkanoid*.
 
-By the completion of this tutorial, you'll be able to:
+By the end of this tutorial, you'll be able to:
 
 * Use the Kaboom framework to develop a polished arcade game with multiple levels.
 * Have a basic game to build on by adding your own powerups and block types.
 
 Our finished game will look like this:
 
-![](/images/tutorials/37-breakout-kaboom/basicgameplay.png)
+![The finished game](/images/tutorials/37-breakout-kaboom/gameplay.gif)
 
-We will be using [this set of sprites](https://opengameart.org/content/breakout-set) by [Michele Bucelli](https://opengameart.org/users/buch) and sounds effects from [this pack](https://opengameart.org/content/100-plus-game-sound-effects-wavoggm4a) by [Jaymin Covy](https://opengameart.org/users/damaged-panda). We'll also use [music by Eric Matyas of Soundimage.org](https://soundimage.org/chiptunes-4/).
+We will be using [this set of sprites](https://opengameart.org/content/breakout-set) by [Michele Bucelli](https://opengameart.org/users/buch) and sounds effects from [this pack](https://opengameart.org/content/100-plus-game-sound-effects-wavoggm4a) by [Jaymin Covy](https://opengameart.org/users/damaged-panda). We'll also use [music](https://soundimage.org/chiptunes-4/) by [Eric Matyas](https://soundimage.org/chiptunes-4/) of Soundimage.org.
 
 We've created a single ZIP file with the sprites and sounds you will need for this tutorial, which you can download [here](/tutorial-files/breakout-kaboom/breakout-resources.zip).
 
 ## Getting started
 
-Log into your Replit account and create a new repl. Choose Kaboom as your project type. Give this repl a name, like "blockbreaker".
+Log into your [Replit](https://replit.com/login) account and create a new repl. Choose **Kaboom** as your project type. Give this repl a name, like "blockbreaker".
 
-![](/images/tutorials/37-breakout-kaboom/create-repl.png)
+![Create a new repl](/images/tutorials/37-breakout-kaboom/create-repl.png)
 
-Kaboom repls are quite different from other kinds of repls you may have seen before: instead of dealing directly with files in folders, you'll be dealing with code, sounds and sprites, the latter of which you can draw directly in Replit's image editor.
+Kaboom repls are quite different from other kinds of repls you may have seen before: instead of dealing directly with files in folders, you'll be dealing with code, sounds and sprites, the latter of which you can draw directly in Replit's [image editor](https://docs.replit.com/tutorials/kaboom-editor).
 
 Before we start coding, we need to upload our sprites and sounds. Download [this ZIP file](/tutorial-files/breakout-kaboom/breakout-resources.zip) and extract it on your computer. Click the "Files" icon on the sidebar then, upload everything in Sounds folder to the "sounds" section of your repl, and everything in the Sprites folder to the "sprites" section of your repl.
+
+<img src="/images/tutorials/37-breakout-kaboom/upload-assets.gif"
+    alt="Uploading assets"
+    style="width: 50% !important;"/>
 
 Once you've uploaded the files, you can click on the "Kaboom" icon in the sidebar, and return to the "main" code file.
 
@@ -66,7 +70,7 @@ import kaboom from "kaboom";
 kaboom();
 ```
 
-Now we can set the stage for our own game. First, we'll make the game background black and fix the game's screen size by altering [the Kaboom intialization](https://kaboomjs.com/#kaboom). Change the last line of your code to resemble the following:
+Now we can set the stage for our own game. First, we'll make the game background black and fix the game's screen size by altering the [Kaboom context initialization](https://kaboomjs.com/#kaboom). Change the line `kaboom();` to resemble the following:
 
 ```javascript
 // initialize context
@@ -77,7 +81,7 @@ kaboom({
 });
 ```
 
-Next, we need to import sprites for our game's objects: the player's paddle, the ball and the breakable blocks. As the OpenGameArt sprites we're using are all in a single image file, we'll load them using Kaboom's [`loadSpriteAtlas()`](https://kaboomjs.com/#loadSpriteAtlas) function. This saves us the hassle of splitting each sprite into its own image file. Add the following code to the bottom of your file:
+Next, we need to import sprites for our game's objects: the player's paddle, the ball and the breakable blocks. As the OpenGameArt sprites we're using are all in a single image file, we'll load them using Kaboom's [`loadSpriteAtlas()`](https://kaboomjs.com/#loadSpriteAtlas) function. This saves us the hassle of splitting each sprite into its own image file. Add the following code to the bottom of your main code file:
 
 ```javascript
 loadSpriteAtlas("sprites/breakout_pieces.png", {
@@ -136,9 +140,11 @@ loadFont("breakout", "sprites/breakout_font.png", 6, 8,  { chars: "ABCDEFGHIJKLM
 
 We've used Kaboom's [`loadFont()`](https://kaboomjs.com/#loadFont) function, specifying the name of the font, the image file to source it from, the width and height of individual characters, and the characters it contains. Take a look at the layout of `breakout_font.png` to see the format Kaboom expects. Also note that we will not be able to use any characters outside of the ones represented here – this includes lowercase letters.
 
-![](/images/tutorials/37-breakout-kaboom/breakout_font.png)
+<img src="/images/tutorials/37-breakout-kaboom/breakout_font.png"
+    alt="Breakout font"
+    style="width: 30% !important;"/>
 
-Lastly, we need to load our sound effects and music. Add the following code to do this:
+Lastly, we need to load our sound effects and music. Add the following code at the bottom to do this:
 
 ```javascript
 // sounds
@@ -290,11 +296,11 @@ Let's take a closer look at each of these definitions, starting with the first b
 
 A game object definition in Kaboom is a list of components, tags, and custom attributes.
 
-Components are a core part of Kaboom – they provide different functionality to game objects, from an object's appearance to functionality such as collision detection. In this case, we have two components: [`sprite()`](https://kaboomjs.com/#sprite), which tells the object which sprite to represent itself with and [`area()`](https://kaboomjs.com/#area), which gives the object the ability to participate in collisions.
+Components are a core part of Kaboom – they provide different functionality to game objects, from an object's appearance to functionality such as collision detection. In this case, we have two components: [`sprite()`](https://kaboomjs.com/#sprite), which tells the object which sprite to represent itself with and [`area()`](https://kaboomjs.com/#area), which gives the object the ability to collide with other objects.
 
 While components come with prepackaged behaviors, tags are just labels that we can use to define our own behavior. This object has the tag "block", which we'll use to give it block-specific behaviors, such as being destroyed by the ball and giving the player points. It also has the tag "bouncy", which we'll use to make the ball bounce off it.
 
-Lastly, our block has a custom `points` attribute, which will determine how many points it will give the player when it is destroyed. Our four block objects use different sprites and have different points values, but are otherwise identical.
+Lastly, our block has a custom `points` attribute, which will determine how many points it will give the player when it is destroyed. Our four block objects use different sprites and have different point values, but are otherwise identical.
 
 Next, let's look at the paddle object:
 
@@ -312,8 +318,6 @@ Next, let's look at the paddle object:
 ```
 
 Like our block objects, the paddle has both `sprite()` and `area()` components. We've also given it the "bouncy" tag, so that the ball will bounce off it. Using tags like this is a great way to avoid writing the same code multiple times. Unlike our block objects, the paddle has an [`origin`](https://kaboomjs.com/#origin) component, set to "center" – this will allow us to move the object from its center rather than its top-left corner.
-
-![](/images/tutorials/37-breakout-kaboom/origins.png)
 
 The paddle object also has a `speed` attribute, which will determine how fast it moves across the screen.
 
@@ -346,7 +350,7 @@ scene("game", ({levelIndex, score, lives}) => {
 
 In addition to providing the level number as an argument (`levelIndex`), we provide both `score` and `lives`. This will allow us to preserve both values when the player defeats one level and moves to the next.
 
-Then add this code to define and call game start function. This function will [`go()`](https://kaboomjs.com/#go) to the first level, setting the player's score to 0 and their lives to 3. In addition to calling it when the game first loads, we will call this function when we need to restart after a game over.
+Then add this code to the bottom of the main code file to define and call game start function. This function will [`go()`](https://kaboomjs.com/#go) to the first level, setting the player's score to 0 and their lives to 3. In addition to calling it when the game first loads, we will call this function when we need to restart after a game over.
 
 ```javascript
 // start game on first level
@@ -363,7 +367,7 @@ start();
 
 Run your repl now. You should see our first level, with its colorful blocks, paddle and ball, frozen in amber. In the next section, we'll add some motion.
 
-![](/images/tutorials/37-breakout-kaboom/firstlevel.png)
+![First level](/images/tutorials/37-breakout-kaboom/firstlevel.png)
 
 ## Moving the paddle
 
@@ -392,13 +396,15 @@ Now we'll add code to move the paddle left and right. We could do this with the 
 
 This code will [run every frame](https://kaboomjs.com/#onUpdate). First, it checks whether the mouse cursor is inside the game area. Then it checks whether the cursor is to the paddle's left or right, and moves the paddle in that direction. The paddle won't move if it is vertically in line with the cursor.
 
-Note the use of [`worldArea()`]. This method, provided by the `area()` component, returns an object containing two sets of X,Y co-ordinates, `p1` and `p2`. `p1` is the top-left corner of the object's collision mask, and `p2` is its bottom right corner. By default, an object's collision mask is a rectangle of the same size as its sprite – Kaboom does not support non-rectangular collision masks.
+Note the use of `worldArea()`. This method, provided by the `area()` component, returns an object containing two sets of X,Y co-ordinates, `p1` and `p2`. `p1` is the top-left corner of the object's collision mask, and `p2` is its bottom right corner. By default, an object's collision mask is a rectangle of the same size as its sprite – Kaboom does not support non-rectangular collision masks.
 
 Rerun your repl now and try out the controls. If you have a touch screen on your device, you can also move the paddle by tapping or dragging your finger.
 
+![Moving the paddle](/images/tutorials/37-breakout-kaboom/move-paddle.gif)
+
 ## Moving the ball
 
-Now that we can move the paddle, we need the ball to move as well. Add the following code to your file:
+Now that we can move the paddle, we need the ball to move as well. Add the following code to your file with the "game" scene:
 
 ```javascript
     // ball movement
@@ -427,6 +433,8 @@ You'll recall that we set the ball's `hspeed` and `vspeed` in its object definit
 
 If the ball goes off the left or right edges of the screen, we reverse its horizontal direction, and if it goes off the top or bottom of the screen, we reverse its vertical direction. Run your repl now to see this effect in action.
 
+![Moving the ball](/images/tutorials/37-breakout-kaboom/move-ball.gif)
+
 ## Collisions
 
 Now that the ball can move and bounce off the screen's edges, we need it to also bounce off the paddle and the blocks. To achieve this, we'll write an [`onCollide()`](https://kaboomjs.com/#onCollide) event handler for the tags "ball" and "bouncy". Add the following code to the "game" scene, below your ball movement code:
@@ -442,7 +450,7 @@ Now that the ball can move and bounce off the screen's edges, we need it to also
     });
 ```
 
-Note that we're only changing the vertical direction of the ball, because that's the important one for our gameplay. While we could implement more complex bounce physics by taking into account which sides the collision occured on, changing the vertical direction alone gets us the type of ball movement players expect from a block-breaking game.
+Note that we're only changing the vertical direction of the ball, because that's the important one for our gameplay. While we could implement more complex bounce physics by taking into account which sides the collision occurred on, changing the vertical direction alone gets us the type of ball movement players expect from a block-breaking game.
 
 Now that the player can actually hit the ball with their paddle, we shouldn't have the ball bounce off the bottom of the screen anymore. Find your `onUpdate("ball")` callback and remove second condition from the second `if` statement. Your callback should now look like this:
 
@@ -496,11 +504,11 @@ Now that we're changing the `score` variable, it's important that we display it 
     });
 ```
 
-We've added an [`onDraw()`](https://kaboomjs.com/#onDraw) callback, which will run every frame, after all `onUpdate()` callbacks have run. `onDraw()` callbacks are the only place we can using drawing functions such as [`drawText()`](https://kaboomjs.com/#drawText). Also note that we've used the font we defined at the start of this tutorial.
+We've added an [`onDraw()`](https://kaboomjs.com/#onDraw) callback, which will run every frame, after all `onUpdate()` callbacks have run. `onDraw()` callbacks are the only place we can use drawing functions such as [`drawText()`](https://kaboomjs.com/#drawText). Also note that we've used the font we defined at the start of this tutorial.
 
 Run your repl now, and you should be able to hit the ball with your paddle, destroy blocks, and get points. Our core gameplay is implemented.
 
-![](/images/tutorials/37-breakout-kaboom/basicgameplay.png)
+![Game play](/images/tutorials/37-breakout-kaboom/basicgameplay.png)
 
 ## Winning and losing
 
@@ -510,37 +518,36 @@ Let's fix these deficiencies now by implementing lives, as well as win and lose 
 
 ```javascript
     onUpdate("ball", (ball) => {
+      // bounce off screen edges
+      if (ball.worldArea().p1.x < 0 || ball.worldArea().p2.x > width()) {
+        ball.hspeed = -ball.hspeed;
+      }
     
-        // bounce off screen edges
-        if (ball.pos.x > width() || ball.pos.x < 0) {
-            ball.hspeed = -ball.hspeed;
+      if (ball.worldArea().p1.y < 0) {
+        ball.vspeed = -ball.vspeed;
+      }
+    
+      // fall off screen -- NEW CODE BELOW
+      if (ball.pos.y > height()) {
+        lives -= 1;
+        if (lives <= 0) {
+          go("lose", { score: score });
         }
-        
-        if (ball.pos.y < 0) {
-            ball.vspeed = -ball.vspeed;
+        else {
+          ball.pos.x = width()/2;
+          ball.pos.y = height()/2;
         }
-
-        // fall off screen -- NEW CODE BELOW
-        if (ball.pos.y > height()) {
-            lives -= 1;
-            if (lives <= 0) {
-                go("lose", { score: score });
-            }
-            else {
-                ball.pos.x = width()/2;
-                ball.pos.y = height()/2;
-            }
-        }
-        // END OF NEW CODE
-
-        // move
-        ball.move(ball.hspeed, ball.vspeed);
-    })
+      }
+      // END OF NEW CODE
+    
+      // move
+      ball.move(ball.hspeed, ball.vspeed);
+    });
 ```
 
-This code checks whether the ball has fallen of the screen, and if so, decrements `lives`. If there are lives remaining, it moves the ball back to middle of the screen. Otherwise, it sends the player to the "lose" scene, which we'll define soon. But first, we need to provide for the game's win condition.
+This code checks whether the ball has fallen of the screen, and if so, decrements `lives`. If there are lives remaining, it moves the ball back to the middle of the screen. Otherwise, it sends the player to the "lose" scene, which we'll define soon. But first, we need to provide for the game's win condition.
 
-We'll consider a level won once all of the blocks have been destroyed. To determine this, we can check whether the number of blocks in the level is 0. We'll put this check in the ball and block collision callback, after the block is destroyed. Find this code and alter it to resemble the following:
+We'll consider a level won once all the blocks have been destroyed. To determine this, we can check whether the number of blocks in the level is 0. We'll put this check in the ball and block collision callback, after the block is destroyed. Find this code and alter it to resemble the following:
 
 ```javascript
     onCollide("ball", "block", (ball, block) => {
@@ -621,7 +628,7 @@ These scenes are quite similar to each other: each one displays some text, inclu
 
 Run your repl now. You should now be able to play through both levels of our block-breaking game (or lose and reach the game over screen).
 
-![](/images/tutorials/37-breakout-kaboom/gameover.png)
+![Game over screen](/images/tutorials/37-breakout-kaboom/gameover.png)
 
 ## Powerups
 
@@ -707,6 +714,7 @@ We've built a simple but polished block-breaking game. From here, you might want
 * New powerups, such as a longer paddle, multiple balls, or even a paddle-mounted laser gun.
 * Bigger and smaller blocks, blocks that can take multiple hits or moving blocks.
 
-You can find our repl below.
+You can find our repl here.
 
-!!!repl embed
+<iframe height="400px" width="100%" src="https://replit.com/@ritza/blockbreaker?embed=true" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>
+
