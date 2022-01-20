@@ -8,7 +8,7 @@ Using three.js with Replit requires a little bit of setup, but it has a nice adv
 
 ## Creating a new project in Replit
 
-Head over to [Replit](https://replit.com) and create a new repl. Choose **HTML, CSS, JS** as your project type. Now, give this repl a name, like "3D!".
+Head over to [Replit](https://replit.com) and create a new repl. Choose **HTML, CSS, JS** as your project type. Now, give this repl a name, like "3D rendering".
 
 ![creating a new replit project](/images/tutorials/38-3drendering-threejs/new-project.png)
 
@@ -43,7 +43,7 @@ To start, we'll add some basic built-in 3D shapes to a scene. The main steps are
 1. Add the mesh to the scene.
 1. Add a camera to the scene, which determines what we see rendered. 
 
-That's quite a few steps, so let's start by creating a renderer. Add the following line to the `script.js` file:
+That's quite a few steps, so let's start by creating a renderer. Add the following lines to the `script.js` file:
 
 ```javascript
 const renderer = new THREE.WebGLRenderer();
@@ -78,7 +78,7 @@ const material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
 ```
 The MeshBasicMaterial is a simple material that covers the geometry with a solid color, in this case using the hexadecimal RGB code for pure green. You can also use a [`Texture`](https://threejs.org/docs/index.html#api/en/textures/Texture) to cover the geometry with a texture.
 
-The next step is combining the geometries and the material to make a mesh. Add the following line to the `script.js` file:
+The next step is combining the geometries and the material to make a mesh. Add the following lines to the `script.js` file:
 
 ```javascript
 const cube = new THREE.Mesh(boxGeometry, material);
@@ -107,9 +107,12 @@ renderer.render(scene, camera);
 
 Now try running the code, by pushing the `Run` button at the top of the Replit window. You should see a green cube and torus:
 
-![static-scene](/images/tutorials/38-3drendering-threejs/static-scene.png)
+<img src="/images/tutorials/38-3drendering-threejs/static-scene.png"
+    alt="static-scene"
+    style="Width: 60% !important;"/>
 
-Well done! You've create your first scene. It doesn't look very "3D" yet, but we'll get there soon.
+
+Well done! You've created your first scene. It doesn't look very "3D" yet, but we'll get there soon.
 
 ## Animating a scene
 
@@ -131,13 +134,15 @@ This creates a new function `animate()` that will be called every frame. In this
 
 After we rotate the objects, we call the `renderer.render(scene, camera);` method to draw the scene. This will cause the scene to be redrawn every frame, with the updated rotations.
 
-The `requestAnimationFrame` function is a built in browser API call that will fire the `animate()` function on the next frame. We call that so that we can keep the animation running.
+The `requestAnimationFrame` function is a built-in browser API call that will fire the `animate()` function on the next frame. We call that so that we can keep the animation running.
 
 To kick off the animation, we call the `animate()` function in the `script.js` file. It will keep itself running after that through the `requestAnimationFrame` function.
 
-Press "Command+S" on Mac, or "Cntrl + S" on other systems, or press the "Run" button again. You should see the torus and cube rotating in the Replit window:
+Press the "Run" button again. You should see the torus and cube rotating in the Replit window:
 
-![animated-scene](/images/tutorials/38-3drendering-threejs/animated-scene.gif)
+<img src="/images/tutorials/38-3drendering-threejs/animated-scene.gif"
+    alt="animated-scene"
+    style="Width: 60% !important;"/>
 
 That looks a lot more 3D now!
 
@@ -150,22 +155,25 @@ We've created some basic 3D shapes programmatically. As you can imagine, buildin
 To add the model loading functionality, we need to import it into our script. At the top of the `script.js` file, just below the existing `import` line, add the following:
 
 ```javascript
-import { GLTFLoader } from 'https://cdn.skypack.dev/three@0.136.0/examples/jsm/loaders/GLTFLoader.js'
+import { GLTFLoader } from 'https://cdn.skypack.dev/three@0.136.0/examples/jsm/loaders/GLTFLoader.js';
 ```
 
-This gives us the `GLTFLoader` class, which we'll use to load the model. `glTF` stand for Graphics Language Transmission Format, and is widely used as a way to import and export 3D models from various 3D applications. All we need to know is that we can import any model that is saved in this format in our three.js applications. If you search for "Free GLTF 3D models" on the web, you'll find a lot sites where creators upload their models. Many are free to use in your projects, and some you need to pay for. We'll look for some free ones to experiment with. 
+This gives us the `GLTFLoader` class, which we'll use to load the model. `glTF` stands for Graphics Language Transmission Format, and is widely used as a way to import and export 3D models from various 3D applications. All we need to know is that we can import any model that is saved in this format in our three.js applications. If you search for "Free GLTF 3D models" on the web, you'll find a lot of sites where creators upload their models. Many are free to use in your projects, and some you need to pay for. We'll look for some free ones to experiment with. 
 
-Let's use this [model of soda cans to start](https://sketchfab.com/3d-models/soda-cans-4e0be610db9646929d8be84491f1a72f). Download the model, choosing the `glTF` format. We've also included the model [here](soda_cans.zip), so you can download it easily.
+Let's use this [model of soda cans to start](https://sketchfab.com/3d-models/soda-cans-4e0be610db9646929d8be84491f1a72f). Download the model, choosing the `glTF` format. We've also included the model [here](/tutorial-files/3d-rendering-threejs/soda_cans.zip), so you can download it easily.
 
 Add the model to your repl by dragging the folder into the "Files" panel on the left.
 
-![add-model](/images/tutorials/38-3drendering-threejs/add-model.gif)
+<img src="/images/tutorials/38-3drendering-threejs/add-model.gif"
+    alt="add-model"
+    style="Width: 60% !important;"/>
+
 
 We'll need to remove or comment out the previous code that drew the cube and torus. Remove the lines that create the cube and torus geometries, materials and meshes, as well as the animation code. You should have only the following lines remaining:
 
 ```javascript
 import * as THREE from 'https://cdn.skypack.dev/three@0.136.0';
-import { GLTFLoader } from 'https://cdn.skypack.dev/three@0.136.0/examples/jsm/loaders/GLTFLoader.js'
+import { GLTFLoader } from 'https://cdn.skypack.dev/three@0.136.0/examples/jsm/loaders/GLTFLoader.js';
 
 const renderer = new THREE.WebGLRenderer();
 renderer.setSize(window.innerWidth, window.innerHeight);
@@ -185,7 +193,7 @@ let model;
 ```
 Here we've created a new loader object, and we've also created a variable `fileName` with the path to the soda can model to load. We also have a variable `model` that will hold the loaded model, which we can manipulate later.
 
-Now for the actual loading code. We'll use the `load` method of the loader.  Add the following lines to the `script.js` file, below the code we've just added:s
+Now for the actual loading code. We'll use the `load` method of the loader.  Add the following lines to the `script.js` file, below the code we've just added:
 
 ```javascript
 loader.load(fileName, function (gltf) {
@@ -196,9 +204,9 @@ loader.load(fileName, function (gltf) {
 });
 
 ```
-The `load` method takes a few parameters: the path to the model, a callback function that will be called when the model is loaded, a loading progress callback function and an error callback function that will be called if there is an error loading the model. We supply the `undefined` value for the progress callback, as we don't need them for this example, although it is a nice touch in a production application to give feedback to the user.
+The `load` method takes a few parameters: the path to the model, a callback function that will be called when the model is loaded, a loading progress callback function and an error callback function that will be called if there is an error loading the model. We supply the `undefined` value for the progress callback, as we don't need it for this example, although it is a nice touch in a production application to give feedback to the user.
 
-This alone won't always make a model visible on the screen. This is because a model may have no lighting, or the material may not be self-illuminating. Another problem is that the mode may be too large, or too small, to be visible from our default camera angle. To account for these possibilities, we'll add some helper functions to add lighting and adjust the model's position and the camera position and angle. 
+This alone won't always make a model visible on the screen. This is because a model may have no lighting, or the material may not be self-illuminating. Another problem is that the model may be too large, or too small, to be visible from our default camera angle. To account for these possibilities, we'll add some helper functions to add lighting and adjust the model's position and the camera position and angle. 
 
 Let's start with adding some lighting. Add the following function to the `script.js` file:
 
@@ -209,7 +217,7 @@ function addLight() {
   camera.add(light);
 }
 ```
-This function will a directional light with a white color and a position in the direction of the camera. We'll add this light to the scene and also attach it to the camera, so that it is always shining at whatever the camera is looking at.
+This function will show a directional light with a white color and a position in the direction of the camera. We'll add this light to the scene and also attach it to the camera, so that it is always shining at whatever the camera is looking at.
 
 The second helper function is to adjust the position of the model and the camera. Add the following function to the `script.js` file:
 
@@ -236,7 +244,7 @@ function adjustModelAndCamera() {
 }
 
 ```
-This function works by finding the bounding box of the model. The bounding box is the smallest box that can contain all the vertices of the model. We can then use this box to set the camera's near and far clipping planes, and also to adjust the position of the model and the camera. Clipping planes are used to determine what is visible in the camera's view. The near plane is the closest distance from the camera that the model can "see".  The far plane is the furthest distance the camera can "see". This is used to determine what is visible in the camera's view. `camera.updateProjectionMatrix` recalculates the camera's internal 
+This function works by finding the bounding box of the model. The bounding box is the smallest box that can contain all the vertices of the model. We can then use this box to set the camera's near and far clipping planes, and also to adjust the position of the model and the camera. Clipping planes are used to determine what is visible in the camera's view. The near plane is the closest distance from the model that the camera can "see".  The far plane is the furthest distance the camera can "see". This is used to determine what is visible in the camera's view. `camera.updateProjectionMatrix` recalculates the camera's internal 
 
 We center the camera on the model, and then adjust the camera's position and angle to make sure the model is visible. We also point the camera to the center of the model using the `lookAt` method.
 
@@ -260,7 +268,10 @@ You'll notice along with calls to the new function, we added in an extra line `s
 
 If you run the code, you'll see that the model is now visible in the scene. However, it's a side on view and a bit far away. 
 
-![model-side-view](/images/tutorials/38-3drendering-threejs/model-side-view.png)
+<img src="/images/tutorials/38-3drendering-threejs/model-side-view.png"
+    alt="model-side-view"
+    style="Width: 60% !important;"/>
+
 
 ## Adding controls to the scene
 
@@ -300,8 +311,12 @@ animate();
 
 Save and run the project. Now you can try using the mouse to rotate the model and zoom in and out. 
 
-![model-orbit-controls](/images/tutorials/38-3drendering-threejs/model-orbit-controls.gif)
+<img src="/images/tutorials/38-3drendering-threejs/model-orbit-controls.gif"
+    alt="model-orbit-controls"
+    style="Width: 90% !important;"/>
 
 ## Next Steps
 
-Well done! In this tutorial, you set up a three.js, created a scene using built-in geometry and materials, and animated it. You also learned how to load a model from a file, and how to add lighting and orbit controls to the scene. There is a lot more interesting things to learn about three.js and 3D rendering. Head over to the [three.js documentation](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) to play around and see more examples. You can also download and try [Blender](https://www.blender.org/) to create your own 3D models.
+Well done! In this tutorial, you set up three.js, created a scene using built-in geometry and materials, and animated it. You also learned how to load a model from a file, and how to add lighting and orbit controls to the scene. There is a lot more interesting things to learn about three.js and 3D rendering. Head over to the [three.js documentation](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) to play around and see more examples. You can also download and try [Blender](https://www.blender.org/) to create your own 3D models.
+
+<iframe height="400px" width="100%" src="https://replit.com/@ritza/3D-rendering?embed=true" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>
