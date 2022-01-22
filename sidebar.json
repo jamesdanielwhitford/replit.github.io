@@ -122,9 +122,12 @@
         "name": "Introduction to Teams for Education",
         "slug": "intro-teams-education"
       },
-
       { "name": "FAQ",
-        "slug": "FAQ"},
+        "slug": "FAQ"
+      },
+      { "name": "Getting Started Checklist",
+        "slug": "teams-edu-checklist"
+      },
       {
         "name": "Inviting teachers and students",
         "slug": "inviting-teachers-students"

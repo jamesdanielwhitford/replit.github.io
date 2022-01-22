@@ -2,9 +2,9 @@
 
 ### For Organization Admins:
 
-1. Start by [signing up for a Team for Education](https://docs.replit.com/teams/intro-teams-education). Now you are an organization admin and can view all of the teams within your organization.
-2. Create a “home” team and [invite all of the teachers](https://docs.replit.com/teams/inviting-teachers-students) who will be using Replit with you to join it.
-3. Once they’ve joined your home team, [assign them all “Admin” roles](https://docs.replit.com/teams/assigning-user-roles). Doing so will give them the ability to view and edit Team Projects within the team!
+1. Start by [signing up for a Team for Education](https://docs.replit.com/teams/intro-teams-education). Now you are an organization owner and can view all of the teams within your organization.
+2. To give your colleagues the ability to create new teams for their own classes, [add them as Org Admins](https://docs.replit.com/teams/inviting-teachers-students). 
+3. TIP: Create a “home” team and [invite all of the teachers](https://docs.replit.com/teams/inviting-teachers-students) who will be using Replit with you to join it. This can be their hub to collaborate on shared curriculum resources. 
 
 ### For Teachers: 
 1. Click on “Add Team” to begin creating your first team. Now you’re the team owner!
