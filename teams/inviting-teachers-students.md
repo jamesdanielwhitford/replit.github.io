@@ -44,4 +44,4 @@ You can share this link with your students. When signing up from this link, they
 
 * To add someone as a Team Admin, first add them to your team as you would a student.
 * Once they've accepted the invite, go to the "Manage Team Members" modal and change their role to "Admin"
-![Changing a user role to team admin](static/images/teamsForEducation/inviting-users/add_team_admin.gif)
+![Changing a user role to team admin](/images/teamsForEducation/inviting-users/add_team_admin.gif)
