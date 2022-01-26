@@ -26,22 +26,3 @@ To protect the privacy of students and remain compliant with privacy regulations
 
 You can share this link with your students. When signing up from this link, they will not be required to enter an email address. Once they have signed up, they will automatically be added to your team.
 
-## Invite Org Owners and Admins
-**Org Owners** can add and remove Org Admins, delete and rename an org, and create and access all teams as an admin. 
-
-**Org Admins** can create new teams within an organization.
-
-* To add a new Org Admin or Owner, find your Organization and click on the settings gear.
-* Click "Add Org Admin or Owner"
-* Invite an Org Admin or Owner using their username or email. They'll receive a notification to join your team with their new role! 
-![Adding Team Admins](/images/teamsForEducation/inviting-users/add_org_admin.gif)
-
-* Once they've accepted the invitation, you can go back to edit their role or remove them.
-![Editing org admins](/images/teamsForEducation/inviting-users/edit_org_admin.gif)
-
-## Invite Team Admins
-**Team Admins** can view and edit Team Projects, Project Solutions, and student submissions.
-
-* To add someone as a Team Admin, first add them to your team as you would a student.
-* Once they've accepted the invite, go to the "Manage Team Members" modal and change their role to "Admin"
-![Changing a user role to team admin](/images/teamsForEducation/inviting-users/add_team_admin.gif)
