@@ -115,8 +115,18 @@
     ]
   },
   {
-    "name": "Teams for Education",
+    "name": "Teams",
     "slug": "teams",
+    "contents": [
+      {
+        "name": "Team roles and permissions",
+        "slug": "roles-and-permissions"
+      }
+    ]
+  },
+  {
+    "name": "Teams for Education",
+    "slug": "teams-edu",
     "contents": [
       {
         "name": "Introduction to Teams for Education",
@@ -220,7 +230,7 @@
       {
         "name": "IT administrators toolkit",
         "slug": "it-administrators-toolkit"
-      }
+      },
       {
         "name": "Teams for Education Support",
         "slug": "teams-edu-support"
