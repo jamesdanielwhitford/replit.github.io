@@ -205,7 +205,7 @@
         "name": "Exporting Student Projects",
         "slug": "exporting-student-submissions"
       },
-      
+
        {
         "name": "Curriculum Hub",
         "slug": "curriculum-hub"
@@ -239,6 +239,10 @@
       {
         "name": "Interviewing candidates with guest mode",
         "slug": "interviewing-candidates-guest-mode"
+      },
+      {
+        "name": "Hosting your documentation on Replit",
+        "slug": "hosting-your-documentation-on-replit"
       }
     ]
   },
