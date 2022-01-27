@@ -1,4 +1,5 @@
 # How to write and host your technical documentation using Replit
+#
 
 In this guide, You'll learn how to build a professional technical documentation site. You'll write your docs as simple Markdown files, and use mkdocs-material as a static site generator to create fast-loading HTML pages.
 
@@ -6,7 +7,7 @@ By using Replit as an IDE and web server, you can keep your documentation publis
 
 By the end of this guide, you'll have a bare-bones docs page set up and you can simply start adding content.
 
-![final website](final-website.png)
+![final website](/images/teamsPro/hosting-docs/final-website.png)
 
 ## Steps to follow
 
@@ -27,7 +28,7 @@ MkDocs is a Python library so we'll use a Python repl. We're going to be using [
 
 Visit [https://repl.new/python](https://repl.new/python) to create a new repl and choose your Team account as the owner.
 
-![create repl](create-repl.png) 
+![create repl](/images/teamsPro/hosting-docs/create-repl.png) 
 
 You'll then be directed to the Replit workspace where you can edit and work on your project.
 
@@ -74,7 +75,7 @@ mkdocs serve -a 0.0.0.0:443
 
 This will start the MKDocs development server and Replit will pop open a browser preview window. It should look as follows.
 
-![website](doc-website.png)
+![website](/images/teamsPro/hosting-docs/doc-website.png)
 
 You can also see the URL of your docs that is visible to the world. It should look similar to `https://mkdocs.ritza.repl.co`, but with your team and project name.
 
@@ -92,7 +93,7 @@ nav:
  
 This will add the new page to the website's navigation bar.
 
-![new page](new-page.png)
+![new page](/images/teamsPro/hosting-docs/new-page.png)
 
 You can repeat this process if you would like to add more pages to your website - create a new file and add the name of the page and file to the configuration file.
 
@@ -108,7 +109,7 @@ Now the docs will be served whenever you hit the big green "Run" button.
 
 Next, click on the name of your repl and turn on "Always On" and "Add Boost". This will mean users can always visit your site and it won't get turned off. The boost will give you some extra processing power which will make it faster to build your site once you have a lot of markdown files.
 
-![boost repl](boost.png)
+![boost repl](/images/teamsPro/hosting-docs/boost.png)
 
 
 ## Adding version control
@@ -117,15 +118,15 @@ You'll want to track changes and updates to your documentation with version cont
 
 Navigate to the version control tab on the left side of the project workspace and click on create a repository.
 
-![create a repo](create-repo.png)
+![create a repo](/images/teamsPro/hosting-docs/create-repo.png)
 
 This will initiate a repository with the current version of your project, you can then click on the connect to GitHub option to connect to your Github account.
 
-![connect to GitHub](connect-github.png)
+![connect to GitHub](/images/teamsPro/hosting-docs/connect-github.png)
 
 From the pop window, choose the name of your repository and create it.
 
-![name repo](create-git-repo.png)
+![name repo](/images/teamsPro/hosting-docs/create-git-repo.png)
 
 This will automatically upload the contents of the entire site's documentation to your repository on GitHub. Any time you make a change from Replit, you can commit and push up the changes to GitHub to ensure that nothing gets lost and you have a log of all changes made to the docs.
 
@@ -138,11 +139,11 @@ If your project is not up to date, it will mean that several commits have been m
 
 To add those changes, click on the pull button which will update your project by adding those changes.
 
-![pull changes](replit-pr.png)
+![pull changes](/images/teamsPro/hosting-docs/replit-pr.png)
 
 Once, your changes have been pulled from GitHub your project will be up to date with the Github repository. You may have to stop and start the repl to see the changes reflect live.
 
-![Up to date repo](up-to-date.png)
+![Up to date repo](/images/teamsPro/hosting-docs/up-to-date.png)
 
 ## Set up a custom domain
 
