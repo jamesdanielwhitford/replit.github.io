@@ -115,16 +115,29 @@
     ]
   },
   {
-    "name": "Teams for Education",
+    "name": "Teams",
     "slug": "teams",
+    "contents": [
+      {
+        "name": "Team roles and permissions",
+        "slug": "roles-and-permissions"
+      }
+    ]
+  },
+  {
+    "name": "Teams for Education",
+    "slug": "teams-edu",
     "contents": [
       {
         "name": "Introduction to Teams for Education",
         "slug": "intro-teams-education"
       },
-
       { "name": "FAQ",
-        "slug": "FAQ"},
+        "slug": "FAQ"
+      },
+      { "name": "Getting Started Checklist",
+        "slug": "teams-edu-checklist"
+      },
       {
         "name": "Inviting teachers and students",
         "slug": "inviting-teachers-students"
@@ -217,6 +230,10 @@
       {
         "name": "IT administrators toolkit",
         "slug": "it-administrators-toolkit"
+      },
+      {
+        "name": "Teams for Education Support",
+        "slug": "teams-edu-support"
       }
     ]
   },
@@ -445,6 +462,10 @@
         "slug": "36-physics-playground-with-kaboom"
       },
       {
+        "name": "Breakout with Kaboom.js",
+        "slug": "37-build-breakout-with-kaboom"
+      },
+      {
         "name": "3D Rendering with Three.js",
         "slug": "38-3D-rendering-with-threejs"
       },
@@ -527,6 +548,10 @@
       {
         "name": "Learn Python the Right Way",
         "slug": "learn-python-the-right-way"
+      },
+      {
+        "name": "Make Javascript Games",
+        "slug": "makes-js-games"
       }
     ]
   }
