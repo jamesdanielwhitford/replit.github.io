@@ -12,14 +12,14 @@ By the end of this guide, you'll have a bare-bones documentation site set up, an
 
 We'll cover how to:
 
-* create the repl
-* install the MkDocs library
-* add pages to our documentation site
-* view the HTML version of our docs
-* add our docs under version control
-* pull changes made from GitHub
-* set up a custom domain
-* scale the docs site using multiple repls and Cloudflare
+* Create the repl
+* Install the MkDocs library
+* Add pages to our documentation site
+* View the HTML version of our docs
+* Add our docs under version control
+* Pull changes made from GitHub
+* Set up a custom domain
+* Scale the docs site using multiple repls and Cloudflare
 
 ## Creating a repl
 
