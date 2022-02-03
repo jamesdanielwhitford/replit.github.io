@@ -1,4 +1,4 @@
-# Unit testing
+# Autograding using Unit Testing
 
 Repl unit testing allows a repl author to create code-driven tests that compare actual function output with expected output. 
 
@@ -7,6 +7,13 @@ Repl unit testing allows a repl author to create code-driven tests that compare 
 - Java – [JUnit](https://junit.org/junit5/docs/current/user-guide/)
 - Python – [unittest](https://docs.python.org/3/library/unittest.html)
 - Node.js – [Jest](https://jestjs.io/docs/en/getting-started)
+
+In this tutorial, you'll learn:
+* Why unit testing is used
+* How to use the testing pane
+* Advanced setup and teardown
+* Tips for writing tests
+
 
 ## Why Use Unit Testing?
 

@@ -143,83 +143,55 @@
         "slug": "inviting-teachers-students"
       },
       {
-        "name": "Using multiplayer with anonymous users",
-        "slug": "using-multiplayer-anonymous-users"
+        "name": "Creating and managing teams",
+        "slug": "creating-managing-teams"
       },
       {
-        "name": "Assigning nicknames",
-        "slug": "assigning-nicknames"
+        "name": "Inviting and managing users",
+        "slug": "inviting-managing-users"
       },
       {
-        "name": "Assigning user roles",
-        "slug": "assigning-user-roles"
+        "name": "Creating and managing projects",
+        "slug": "creating-managing-projects"
       },
       {
-        "name": "Creating projects and assignments",
-        "slug": "creating-projects-assignments"
+        "name": "Duplicating repls to team projects",
+        "slug": "repls-to-team-projects"
       },
       {
-        "name": "Project Solutions",
+        "name": "Creating and managing project solutions",
         "slug": "project-solutions"
       },
       {
+<<<<<<< HEAD
         "name": "Model Solutions",
         "slug": "model-solutions"
       },
       {
         "name": "Lesson and Instructions Authoring",
+=======
+        "name": "Creating lessons",
+>>>>>>> 1ead625 (restructure teams for edu)
         "slug": "lesson-authoring"
-      },
-      {
-        "name": "Individual and group projects",
-        "slug": "group-projects"
-      },
-      {
-        "name": "Organizing Projects",
-        "slug": "organizing-projects"
-      },
-      {
-        "name": "Copying projects to other teams",
-        "slug": "copying-projects-other-teams"
-      },
-      {
-        "name": "Duplicating personal repls into Team Projects",
-        "slug": "repls-to-team-projects"
-      },
-      {
-        "name": "Example homework assignments",
-        "slug": "example-homework-assignments"
       },
       {
         "name": "Reviewing submissions",
         "slug": "reviewing-submissions"
       },
       {
-        "name": "Testing, assessments, and autograding",
-        "slug": "testing-assessments-autograding"
-      },
-      {
-        "name": "Input/output testing",
+        "name": "Autograding using input/output testing",
         "slug": "input-output-testing"
       },
       {
-        "name": "Unit testing",
+        "name": "Autograding using unit testing",
         "slug": "unit-testing"
       },
       {
-        "name": "Embedding projects",
-        "slug": "embedding-projects"
+        "name": "Integrating with other platforms",
+        "slug": "integrating-other-platforms"
       },
       {
-        "name": "Google Classroom Integration",
-        "slug": "google-classroom"
-      },
-      {
-        "name": "Archiving Teams",
-        "slug": "Archiving"
-      },
-       {
-        "name": "Exporting Student Projects",
+        "name": "Exporting student submissions",
         "slug": "exporting-student-submissions"
       },
       {
@@ -227,9 +199,14 @@
         "slug": "curriculum-hub"
       },
       {
+        "name": "IT administrators toolkit",
+        "slug": "it-administrators-toolkit"
+      },
+      {
         "name": "Privacy FAQ",
         "slug": "privacy-faq"
       },
+<<<<<<< HEAD
       {
         "name": "IT administrators toolkit",
         "slug": "it-administrators-toolkit"
@@ -237,6 +214,10 @@
       {
         "name": "Teams for Education Support",
         "slug": "teams-edu-support"
+=======
+      { "name": "FAQ",
+        "slug": "FAQ"
+>>>>>>> 1ead625 (restructure teams for edu)
       }
     ]
   },

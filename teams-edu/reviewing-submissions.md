@@ -1,27 +1,41 @@
-# Reviewing submissions
+# Reviewing Submissions
 
-[Leaving Feedback on Projects Using Annotations](#leaving-feedback-on-projects-using-annotations)
+Replit has a number of features related to helping teachers grade students' submissions.
+
+In this tutorial, you'll learn how to:
+* Review submissions
+* Use annotations to leave feedback
+
+## Review submissions
 
 Teachers can view project submissions from their team dashboard by clicking "View submissions" next to the project name.
 
 <img src="/images/teamsForEducation/project-list.png" />
 
-Submissions will show all student projects submitted and in progress. Click "View Repl" to review each student's or group's code.
+Click "View Repl" to review each student's or group's code.
 
 <img src="/images/teamsForEducation/project-submissions.png" />
 
-To review student work in bulk: 
-* You can open the Projects Overview from your Team homepage to see all projects and student progress at-a-glance. 
-<img src="/images/teamsForEducation/project-overview.png" max-width="100px"/>
-* Hover over the student project to see whether their tests have passed (students must run their tests for this to appear).
-* The Progress column shows percentage of projects submitted.
-* To export the Projects Overview as a CSV file, click on "Export" at the top right of the page.
-<img src="/images/teamsForEducation/projects-overview-export.png" max-width="300px" />
-
 * You can navigate from one project to the next by clicking "View Repl" for any project, clicking on the book icon in the left bar, and using the Navigation pane to move between projects. 
+
 <img src="/images/teamsForEducation/project-review.png" max-width="200px" />
 
-## Leaving feedback on projects using annotations
+To review student work in bulk: 
+* You can open the Projects Overview from your Team homepage to see all projects and student progress at-a-glance. 
+
+<img src="/images/teamsForEducation/projects-overview-button.png" max-width="100px"/>
+
+* Hover over the student project to see whether their tests have passed (students must run their tests for this to appear).
+
+* The Progress column shows percentage of projects submitted.
+
+* To export the Projects Overview as a CSV file, click on "Export" at the top right of the page.
+
+<img src="/images/teamsForEducation/export-submissions.png" max-width="300px" />
+
+
+
+## Leaving feedback using annotations
 
 To leave feedback on your students' work, you can use threads. Threads can be added on projects and team repls, and are an easy way to leave comments on a specific word or line of code.
 
@@ -43,6 +57,6 @@ You can also use familiar markdown syntax in threads and chat.
 
 Here's a quick guide to markdown syntax available in annotation threads:
 
-<img src="https://blog.replit.com/images/annotations/annotations-formatting-2.png" alt="Markdown syntax in Annotations" width="100"/>
+<img src="https://blog.replit.com/images/annotations/annotations-formatting-2.png" alt="Markdown syntax in Annotations" style="width:400px"/>
 
 

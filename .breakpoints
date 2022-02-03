@@ -7,6 +7,20 @@
         "version": 1113,
         "index": 578
       }
+    ],
+    "teams/inviting-managing-users.md": [
+      {
+        "id": "8732a6e7-3dfd-401d-baf1-9ff7607dcca5",
+        "line": 13,
+        "version": 1077,
+        "index": 452
+      },
+      {
+        "id": "bb40e3fa-0445-4e9f-998d-6fc4b99fc7ef",
+        "line": 29,
+        "version": 1077,
+        "index": 1295
+      }
     ]
   }
 }
