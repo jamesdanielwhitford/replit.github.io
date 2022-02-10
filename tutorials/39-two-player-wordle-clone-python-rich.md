@@ -9,11 +9,11 @@ Once you're done, you'll be able to play a command-line based game with a friend
 </video>
 
 
-We'll be using Python and [Rich](https://rich.readthedocs.io/en/stable/introduction.html), a library for rich-text formatting to do the green and yellow colors. To follow along, you should know some basic Python, but we'll explain each code sample in depth so you should be able to keep up even if you don't.
+We'll be using Python, and to do the green and yellow colors we'll use [Rich](https://rich.readthedocs.io/en/stable/introduction.html), a library for rich-text formatting. To follow along, you should know some basic Python, but we'll explain each code sample in depth so you should be able to keep up even if you don't.
 
 ## Installing Rich
 
-Rich isn't part of the Replit Universal Installer, so we have to install it manually. Open up the "Shell" tab in the repl workspace and run the following commands.
+Rich isn't part of the Replit Universal Installer, so we have to install it manually. Open up the "Shell" tab in the repl workspace and run the following commands:
 
 ```
 python3 -m poetry init --no-interaction
@@ -30,17 +30,17 @@ The first thing we need to figure out is how to print out different coloured let
 * Yellow = correct letter in the incorrect position
 * Gray = incorrect letter
 
-Because we're using Rich, we don't have to mess around with [ANSI escape codes](https://en.wikipedia.org/wiki/ANSI_escape_code). It's possible to use them to style terminal text, but you end up having to deal with nasty-looking strings like `\033[0;32m` and deal with compatibility issues too. Rich abstracts this away for us, and we can instead use nicer-looking controls like '[black on green]TWORLDE[/]' to describe how the text should look.
+Because we're using Rich, we don't have to mess around with [ANSI escape codes](https://en.wikipedia.org/wiki/ANSI_escape_code). It's possible to use them to style terminal text, but you end up having to deal with nasty-looking strings like `\033[0;32m`, and there are likely to be compatibility issues too. Rich abstracts this away for us, and we can use nicer-looking controls like '[black on green]TWORDLE[/]' to describe how the text should look.
 
-Take a look at how this works now by adding the following code to `main.py` and pressing "Run".
+Take a look at how this works now by adding the following code to `main.py` and pressing "Run":
 
 ```python
 import rich
 
-rich.print('[black on green]TWORLDE[/]')
+rich.print('[black on green]TWORDLE[/]')
 ```
 
-Because we might want to customize what specific colours mean at some point, let's define each of our three cases in functions. Replace the existing code in `main.py` with the following.
+Because we may want to customize what specific colors mean at some point, let's define each of our three cases in functions. Replace the existing code in `main.py` with the following:
 
 ```python
 import rich
@@ -69,7 +69,7 @@ Run this code, and you'll see a Wordle-styled welcome message, demonstrating all
 
 ## Creating the game loop
 
-As in classic Wordle, our game will allow the player 6 tries to guess a word. Unlike classic Wordle, we'll allow for two players. Player 1 will choose a word, and player 2 will attempt to guess it. The basic logic is then:
+As in classic Wordle, our game will allow the player six tries to guess a word. Unlike classic Wordle, we'll allow for two players. Player 1 will choose a word, and player 2 will attempt to guess it. The basic logic is then:
 
 ```
 Get word from Player 1
@@ -86,14 +86,14 @@ So let's ignore our fancy colored text for a moment and build this logic.
 
 We'll use the Rich `Console` class, which creates a virtual output pane on top of our actual console. This will make it easier to have more control over our output as we build out the app. 
 
-Add the following two imports to the top of the `main.py` file.
+Add the following two imports to the top of the `main.py` file:
 
 ```python
 from rich.prompt import Prompt
 from rich.console import Console
 ```
 
-And now replace the `main()` class with the following code.
+And now replace the `main()` class with the following code:
 
 ```python
 def main():
@@ -114,13 +114,13 @@ def main():
     print(f"\n\nTWORDLE {used_guesses}/{allowed_guesses}\n")
 ```
 
-If you run this, you'll be prompted (as player 1) to enter a word. This will then be hidden from view to avoid spoiling the game, and player 2 can enter up to 6 guesses. At this stage, player 2 doesn't get any feedback on correct or incorrect letters, which makes the game pretty hard for player 2! If player 2 does happen to guess correctly, the loop will break and the game will display how many guesses were used.
+If you run this, you'll be prompted (as player 1) to enter a word. The entered word will then be hidden from view to avoid spoiling the game, and player 2 can enter up to six guesses. At this stage, player 2 doesn't get any feedback on correct or incorrect letters, which makes the game pretty hard for player 2! If player 2 does happen to guess correctly, the loop will break and the game will display how many guesses were used.
 
 ![Game loop](/images/tutorials/39-two-player-wordle-clone-python-rich/gameloop.png)
 
 ### Providing feedback on correct letters
 
-Let's add a helper function to calculate whether each letter should be green, yellow, or gray. Add this function above the existing `main()` one.
+Let's add a helper function to calculate whether each letter should be green, yellow, or gray. Add this function above the existing `main()` one:
 
 ```python
 def score_guess(guess, answer):
@@ -135,14 +135,14 @@ def score_guess(guess, answer):
     return ''.join(scored)
 ```
 
-This takes in player 2's guess and the correct answer and compares them letter by letter. It uses the helper functions we defined earlier to create the Rich formatting string for each letter, and then joins them all together into a single string.
+This function takes in player 2's guess and the correct answer and compares them letter by letter. It uses the helper functions we defined earlier to create the Rich formatting string for each letter, and then joins them all together into a single string.
 
 <hr>
 
-**NOTE:** Here we simplify how duplicate letters are handled. In classic Wordle, letters are colored based on how often they occur in the correct answer (for example, if you guess "SPEED" and the correct word is "THESE", the second `E` in your guess will be colored as incorrect. In our version, it will be labeled as a correct letter in the wrong place. Handling duplicate letters is tricky, and implementing this logic correctly is left as an exercise to the reader.
+**NOTE:** Here we simplify how duplicate letters are handled. In classic Wordle, letters are colored based on how often they occur in the correct answer, for example, if you guess "SPEED" and the correct word is "THOSE", the second `E` in your guess will be colored as incorrect. In our version, it will be labeled as a correct letter in the wrong place. Handling duplicate letters is tricky, and implementing this logic correctly is left as an exercise to the reader.
 <hr />
 
-Call this function from inside the `while` loop in `main()`, by adding the `console.print` line as follows.
+Call this function from inside the `while` loop in `main()` by adding the `console.print` line as follows:
 
 ```python
     while used_guesses < allowed_guesses:
@@ -161,7 +161,7 @@ Now player 2 has something to go on from each guess, and it should be a lot easi
 
 A key part of Wordle is that once a player has guessed a word, they can share a simple graphic of how well they did, without giving away the actual word. For our two-player version, this "no spoilers" feature isn't as important, but let's add it anyway.
 
-As with the letter-coloring, we want to keep the emoji we use configurable. By default, we'll use green, yellow, and gray squares. Let's start by defining this in a dictionary, near the top of our `main.py` file. Add the following to your code.
+As with the letter-coloring, we want to keep the emoji we use configurable. By default, we'll use green, yellow, and gray squares. Let's start by defining this in a dictionary, near the top of our `main.py` file. Add the following to your code:
 
 ```python
 emoji_representations = {
@@ -171,7 +171,7 @@ emoji_representations = {
 }
 ```
 
-Replace the `score_guess` function with the following.
+Replace the `score_guess` function with the following:
 
 ```python
 def score_guess(guess, answer):
@@ -192,7 +192,7 @@ def score_guess(guess, answer):
 
 The logic is very similar to before, but instead of only calcuating the correct style for the letter, we also keep track of each emoji. At the end, we return both the string to print out the scored word, and the emoji representation for that guess.
 
-To use this in the main function, replace the `while` loop with the following code.
+To use this in the main function, replace the `while` loop with the following code:
 
 ```python
     all_emojied = []
@@ -215,11 +215,11 @@ If you run it again, the game will work as before but now you'll see the emoji r
 
 ## Some finishing touches
 
-The one messy part of our game still is that the input prompts are still shown after player 2 has entered each guess. This means that each word is shown twice: once in its colored form, and once exactly as the player entered it. Let's adapt the game to clear the console and output just the colored versions of each guess.
+The one messy part of our game remaining is that the input prompts are still shown after player 2 has entered each guess. This means that each word is shown twice: once in its colored form, and once exactly as the player entered it. Let's adapt the game to clear the console and output just the colored versions of each guess.
 
 To do this, we need to keep track of all player 2's guess, which we were not doing before.
 
-Replace the `while` loop in the `main()` function with the following code.
+Replace the `while` loop in the `main()` function with the following code:
 
 ```python
     all_emojied = []
@@ -243,14 +243,14 @@ This clears the console completely after each guess by player 2, and then prints
 
 ### Adding instructions
 
-People will like our game more if they can figure out what to do without having to read documentation. Let's add some basic instructions for each player to the game interface. Below the `WELCOME_MESSAGE` variable we defined earlier, add the following.
+People will like our game more if they can figure out what to do without having to read documentation. Let's add some basic instructions for each player to the game interface. Below the `WELCOME_MESSAGE` variable we defined earlier, add the following:
 
 ```python
 P1_INSTRUCTIONS = "Player 1: Please enter a word (player 2, look away)"
 P2_INSTRUCTIONS = "Player 2: You may start guessing"
 ```
 
-Now update the `main()` function to look as follows.
+Now update the `main()` function like this:
 
 ```python
 def main():
@@ -283,16 +283,16 @@ def main():
     for em in all_emojied:
         console.print(em)
 ```
-Now our welcome message stays at the top, and the players are prompted about what to do. Have fun playing it with your friends!
+Now our welcome message stays at the top, and the players are prompted by simple instructions. Have fun playing it with your friends!
 
 ## Where next?
 
-The basics of the game are in place, but there is still a lot you could build from here. Some ideas
+The basics of the game are in place, but there is still a lot you could build from here. Some ideas:
 
-* Fix the logic for handling duplicate letters
-* Fix the fact that the game crashes if player 2 enters the wrong number of letters
-* The game still says `6/6` even if player 2 has not guessed the word even after 6 tries. Rather print out `X/6` in this case, as in classic Wordle.
-* Give player 2 more guesses based on the length of the word player 1 enters
-* [CHALLENGING] Make the game work over the internet instead of requiring both players to be in same room
+* Fix the logic for handling duplicate letters.
+* Fix the fact that the game crashes if player 2 enters the wrong number of letters.
+* The game still says `6/6`, even if player 2 has not guessed the word after 6 tries. Have the game print out `X/6` in this case, as in classic Wordle.
+* Give player 2 more guesses based on the length of the word player 1 enters.
+* [CHALLENGING] Make the game work over the internet instead of requiring both players to be in same room.
 
 
