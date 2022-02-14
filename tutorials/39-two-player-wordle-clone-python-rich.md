@@ -1,8 +1,8 @@
-# Building a two player Wordle clone with Python and Rich on Replit
+# Building a two player *Wordle* clone with Python and Rich on Replit
 
-In this guide, we'll build a version of the popular game Wordle. Instead of the computer providing a word that the player has to guess, our version will work with two players. Player 1 will enter the word, and then player 2 will try to guess the word entered, similar to the popular game Hangman.
+In this guide, we'll build a version of the popular game *Wordle*. Instead of the computer providing a word that the player has to guess, our version will work with two players. Player 1 will enter the word, and then player 2 will try to guess the word entered, similar to the popular game *Hangman*.
 
-Once you're done, you'll be able to play a command-line based game with a friend (with both of you sitting at the same machine), as shown below.
+Once you're done, you'll be able to play a command-line-based game with a friend (with both of you sitting at the same machine), as shown below.
 
 <video width="800" autoplay loop>
     <source src="/images/tutorials/39-two-player-wordle-clone-python-rich/twordledemo.mp4" type="video/mp4">
@@ -35,7 +35,7 @@ This will create a `pyproject.toml` file to define Rich as a dependency, and Rep
 
 ## Printing colored text
 
-The first thing we need to figure out is how to print out different coloured letters. By default, we'll use similar settings to the Wordle defaults
+The first thing we need to figure out is how to print out different colored letters. By default, we'll use similar settings to the *Wordle* defaults
 
 * Green = correct letter in the correct position
 * Yellow = correct letter in the incorrect position
@@ -83,7 +83,7 @@ Run this code, and you'll see a Wordle-styled welcome message, demonstrating all
 
 ## Creating the game loop
 
-As in classic Wordle, our game will allow the player six tries to guess a word. Unlike classic Wordle, we'll allow for two players. Player 1 will choose a word, and player 2 will attempt to guess it. The basic logic is then:
+As in classic *Wordle*, our game will allow the player six tries to guess a word. Unlike classic *Wordle*, we'll allow for two players. Player 1 will choose a word, and player 2 will attempt to guess it. The basic logic is then:
 
 ```
 Get word from Player 1
@@ -157,7 +157,7 @@ This function takes in player 2's guess and the correct answer and compares them
 
 <hr>
 
-**NOTE:** Here we simplify how duplicate letters are handled. In classic Wordle, letters are colored based on how often they occur in the correct answer, for example, if you guess "SPEED" and the correct word is "THOSE", the second `E` in your guess will be colored as incorrect. In our version, it will be labeled as a correct letter in the wrong place. Handling duplicate letters is tricky, and implementing this logic correctly is left as an exercise to the reader.
+**NOTE:** Here we simplify how duplicate letters are handled. In classic *Wordle*, letters are colored based on how often they occur in the correct answer, for example, if you guess "SPEED" and the correct word is "THOSE", the second E in your guess will be colored as incorrect. In our version, it will be labeled as a correct letter in the wrong place. Handling duplicate letters is tricky, and implementing this logic correctly is left as an exercise to the reader.
 <hr />
 
 Call this function from inside the `while` loop in `main()` by adding the `console.print` line as follows:
@@ -180,7 +180,7 @@ Now player 2 has something to work on from each guess, and it should be a lot ea
 
 ## Adding an emoji representation for spoiler-free sharing
 
-A key part of Wordle is that once a player has guessed a word, they can share a simple graphic of how well they did, without giving away the actual word. For our two-player version, this "no spoilers" feature isn't as important, but let's add it anyway.
+A key part of *Wordle* is that once a player has guessed a word, they can share a simple graphic of how well they did, without giving away the actual word. For our two-player version, this "no spoilers" feature isn't as important, but let's add it anyway.
 
 As with the letter-coloring, we want to keep the emoji we use configurable. By default, we'll use green, yellow, and gray squares. Let's start by defining this in a dictionary, near the top of our `main.py` file. Add the following to your code:
 
@@ -316,7 +316,7 @@ The basics of the game are in place, but there is still a lot you could build fr
 
 * Fix the logic for handling duplicate letters.
 * Fix the fact that the game crashes if player 2 enters the wrong number of letters.
-* The game still says `6/6`, even if player 2 has not guessed the word after 6 tries. Have the game print out `X/6` in this case, as in classic Wordle.
+* The game still says `6/6`, even if player 2 has not guessed the word after six tries. Have the game print out `X/6` in this case, as in classic *Wordle*.
 * Give player 2 more guesses based on the length of the word player 1 enters.
 * [CHALLENGING] Make the game work over the internet instead of requiring both players to be in same room.
 
