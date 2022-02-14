@@ -1,30 +1,41 @@
-# Building a two player Wordle clone with Python and Rich on Replit
+# Building a two player *Wordle* clone with Python and Rich on Replit
 
-In this guide, we'll build a version of the popular game Wordle. Instead of the computer providing a word that the player has to guess, our version will work with two players. Player 1 will enter the word, and then player 2 will try to guess the word entered, similar to the popular game Hangman.
+In this guide, we'll build a version of the popular game *Wordle*. Instead of the computer providing a word that the player has to guess, our version will work with two players. Player 1 will enter the word, and then player 2 will try to guess the word entered, similar to the popular game *Hangman*.
 
-Once you're done, you'll be able to play a command-line based game with a friend (with both of you sitting at the same machine), as shown below.
+Once you're done, you'll be able to play a command-line-based game with a friend (with both of you sitting at the same machine), as shown below.
 
-<video width="800" autoplay>
+<video width="800" autoplay loop>
     <source src="/images/tutorials/39-two-player-wordle-clone-python-rich/twordledemo.mp4" type="video/mp4">
 </video>
 
 
-We'll be using Python, and to do the green and yellow colors we'll use [Rich](https://rich.readthedocs.io/en/stable/introduction.html), a library for rich-text formatting. To follow along, you should know some basic Python, but we'll explain each code sample in depth so you should be able to keep up even if you don't.
+We'll be using Python, and to do the green and yellow colors we'll use [Rich](https://rich.readthedocs.io/en/stable/introduction.html), a library for rich-text formatting. To follow along, you should know some basic Python, but we'll explain each code sample in depth so you should be able to keep up even if you are not familiar with Python.
+
+## Getting started
+
+To get started, create a **Python** repl.
+
+![New repl](/images/tutorials/39-two-player-wordle-clone-python-rich/new-repl.png)
+
 
 ## Installing Rich
 
 Rich isn't part of the Replit Universal Installer, so we have to install it manually. Open up the "Shell" tab in the repl workspace and run the following commands:
 
-```
+```bash
 python3 -m poetry init --no-interaction
 python3 -m poetry add rich
 ```
 
-This will create a `poetry.toml` file to define Rich as a dependency, and Replit will automatically install it for us next time we run our app.
+This will create a `pyproject.toml` file to define Rich as a dependency, and Replit will automatically install it for us next time we run our app.
+
+<img src="/images/tutorials/39-two-player-wordle-clone-python-rich/shell.png"
+    alt="Running commands in shell"
+    style="Width: 75% !important;"/>
 
 ## Printing colored text
 
-The first thing we need to figure out is how to print out different coloured letters. By default, we'll use similar settings to the Wordle defaults
+The first thing we need to figure out is how to print out different colored letters. By default, we'll use similar settings to the *Wordle* defaults
 
 * Green = correct letter in the correct position
 * Yellow = correct letter in the incorrect position
@@ -54,7 +65,7 @@ def correct_letter(letter):
 def incorrect(letter):
     return f'[black on white]{letter}[/]'
 
-WELCOME_MESSAGE = correct_place("WELCOME") + " " + incorrect("TO") + " " + correct_letter("TWORDLE")
+WELCOME_MESSAGE = correct_place("WELCOME") + " " + incorrect("TO") + " " + correct_letter("TWORDLE") + "\n"
 
 def main():
     rich.print(WELCOME_MESSAGE)
@@ -65,11 +76,14 @@ if __name__ == '__main__':
 
 Run this code, and you'll see a Wordle-styled welcome message, demonstrating all three styles, as shown below.
 
-![Wordle welcome message](/images/tutorials/39-two-player-wordle-clone-python-rich/welcometowordle.png)
+
+<img src="/images/tutorials/39-two-player-wordle-clone-python-rich/welcometowordle.png"
+    alt="Wordle welcome message"
+    style="Width: 80% !important;"/>
 
 ## Creating the game loop
 
-As in classic Wordle, our game will allow the player six tries to guess a word. Unlike classic Wordle, we'll allow for two players. Player 1 will choose a word, and player 2 will attempt to guess it. The basic logic is then:
+As in classic *Wordle*, our game will allow the player six tries to guess a word. Unlike classic *Wordle*, we'll allow for two players. Player 1 will choose a word, and player 2 will attempt to guess it. The basic logic is then:
 
 ```
 Get word from Player 1
@@ -84,7 +98,7 @@ So let's ignore our fancy colored text for a moment and build this logic.
 
 ### Getting and guessing the word
 
-We'll use the Rich `Console` class, which creates a virtual output pane on top of our actual console. This will make it easier to have more control over our output as we build out the app. 
+We'll use the `Console` class from Rich, which creates a virtual output pane on top of our actual console. This will make it easier to have more control over our output as we build out the app. 
 
 Add the following two imports to the top of the `main.py` file:
 
@@ -93,7 +107,7 @@ from rich.prompt import Prompt
 from rich.console import Console
 ```
 
-And now replace the `main()` class with the following code:
+And now replace the `main()` function with the following code:
 
 ```python
 def main():
@@ -116,11 +130,15 @@ def main():
 
 If you run this, you'll be prompted (as player 1) to enter a word. The entered word will then be hidden from view to avoid spoiling the game, and player 2 can enter up to six guesses. At this stage, player 2 doesn't get any feedback on correct or incorrect letters, which makes the game pretty hard for player 2! If player 2 does happen to guess correctly, the loop will break and the game will display how many guesses were used.
 
-![Game loop](/images/tutorials/39-two-player-wordle-clone-python-rich/gameloop.png)
+
+<img src="/images/tutorials/39-two-player-wordle-clone-python-rich/gameloop.png"
+alt="Game loop"
+style="Width: 80% !important;"/>
+
 
 ### Providing feedback on correct letters
 
-Let's add a helper function to calculate whether each letter should be green, yellow, or gray. Add this function above the existing `main()` one:
+Let's add a helper function to calculate whether each letter should be green, yellow, or gray. Add this function above the `main()` function in `main.py`:
 
 ```python
 def score_guess(guess, answer):
@@ -139,7 +157,7 @@ This function takes in player 2's guess and the correct answer and compares them
 
 <hr>
 
-**NOTE:** Here we simplify how duplicate letters are handled. In classic Wordle, letters are colored based on how often they occur in the correct answer, for example, if you guess "SPEED" and the correct word is "THOSE", the second `E` in your guess will be colored as incorrect. In our version, it will be labeled as a correct letter in the wrong place. Handling duplicate letters is tricky, and implementing this logic correctly is left as an exercise to the reader.
+**NOTE:** Here we simplify how duplicate letters are handled. In classic *Wordle*, letters are colored based on how often they occur in the correct answer, for example, if you guess "SPEED" and the correct word is "THOSE", the second E in your guess will be colored as incorrect. In our version, it will be labeled as a correct letter in the wrong place. Handling duplicate letters is tricky, and implementing this logic correctly is left as an exercise to the reader.
 <hr />
 
 Call this function from inside the `while` loop in `main()` by adding the `console.print` line as follows:
@@ -148,23 +166,26 @@ Call this function from inside the `while` loop in `main()` by adding the `conso
     while used_guesses < allowed_guesses:
         used_guesses += 1
         guess = Prompt.ask("Enter your guess")
-        console.print(score_guess(guess, answer_word))
+        console.print(score_guess(guess, answer_word)) # new line
         if guess == answer_word:
             break
 ```
 
-Now player 2 has something to go on from each guess, and it should be a lot easier to guess the correct word by incrementally finding more correct letters, as shown in the example below.
+Now player 2 has something to work on from each guess, and it should be a lot easier to guess the correct word by incrementally finding more correct letters, as shown in the example below.
 
-![Feedback](/images/tutorials/39-two-player-wordle-clone-python-rich/feedback.png)
+<img src="/images/tutorials/39-two-player-wordle-clone-python-rich/feedback.png"
+    alt="Feedback"
+    style="Width: 80% !important;"/>
+
 
 ## Adding an emoji representation for spoiler-free sharing
 
-A key part of Wordle is that once a player has guessed a word, they can share a simple graphic of how well they did, without giving away the actual word. For our two-player version, this "no spoilers" feature isn't as important, but let's add it anyway.
+A key part of *Wordle* is that once a player has guessed a word, they can share a simple graphic of how well they did, without giving away the actual word. For our two-player version, this "no spoilers" feature isn't as important, but let's add it anyway.
 
 As with the letter-coloring, we want to keep the emoji we use configurable. By default, we'll use green, yellow, and gray squares. Let's start by defining this in a dictionary, near the top of our `main.py` file. Add the following to your code:
 
 ```python
-emoji_representations = {
+emojis = {
     'correct_place': '🟩',
     'correct_letter': '🟨',
     'incorrect': '⬜'
@@ -190,9 +211,9 @@ def score_guess(guess, answer):
     return ''.join(scored), ''.join(emojied)
 ```
 
-The logic is very similar to before, but instead of only calcuating the correct style for the letter, we also keep track of each emoji. At the end, we return both the string to print out the scored word, and the emoji representation for that guess.
+The logic is very similar to before, but instead of only calculating the correct style for the letter, we also keep track of each emoji. At the end, we return both the string to print out the scored word, and the emoji representation for that guess.
 
-To use this in the main function, replace the `while` loop with the following code:
+To use this in the main function, replace the code for the `while` loop with the following code:
 
 ```python
     all_emojied = []
@@ -209,9 +230,11 @@ To use this in the main function, replace the `while` loop with the following co
         console.print(em)
 ```
 
-If you run it again, the game will work as before but now you'll see the emoji representation printed after the game ends. This can be copy-pasted to share and help our game go viral. You can see what it looks like in the image below.
+If you run again, the game will work as before, but now you'll see the emoji representation printed after the game ends. This can be copy-pasted to share and help our game go viral. You can see what it looks like in the image below.
 
-![Emoji](/images/tutorials/39-two-player-wordle-clone-python-rich/withemoji.png)
+<img src="/images/tutorials/39-two-player-wordle-clone-python-rich/withemoji.png"
+alt="EmojiS"
+style="Width: 85% !important;"/>
 
 ## Some finishing touches
 
@@ -239,15 +262,17 @@ Replace the `while` loop in the `main()` function with the following code:
 
 This clears the console completely after each guess by player 2, and then prints out each of the (styled) guesses. The output looks neater now, as shown below.
 
-![Cleared inputs](/images/tutorials/39-two-player-wordle-clone-python-rich/clearedinputs.png)
+<img src="/images/tutorials/39-two-player-wordle-clone-python-rich/clearedinputs.png"
+    alt="Cleared inputs"
+    style="Width: 85% !important;"/>
 
 ### Adding instructions
 
 People will like our game more if they can figure out what to do without having to read documentation. Let's add some basic instructions for each player to the game interface. Below the `WELCOME_MESSAGE` variable we defined earlier, add the following:
 
 ```python
-P1_INSTRUCTIONS = "Player 1: Please enter a word (player 2, look away)"
-P2_INSTRUCTIONS = "Player 2: You may start guessing"
+P1_INSTRUCTIONS = "Player 1: Please enter a word (player 2, look away)\n"
+P2_INSTRUCTIONS = "Player 2: You may start guessing\n"
 ```
 
 Now update the `main()` function like this:
@@ -291,8 +316,11 @@ The basics of the game are in place, but there is still a lot you could build fr
 
 * Fix the logic for handling duplicate letters.
 * Fix the fact that the game crashes if player 2 enters the wrong number of letters.
-* The game still says `6/6`, even if player 2 has not guessed the word after 6 tries. Have the game print out `X/6` in this case, as in classic Wordle.
+* The game still says `6/6`, even if player 2 has not guessed the word after six tries. Have the game print out `X/6` in this case, as in classic *Wordle*.
 * Give player 2 more guesses based on the length of the word player 1 enters.
 * [CHALLENGING] Make the game work over the internet instead of requiring both players to be in same room.
 
 
+You can find the code for this tutorial here:
+
+<iframe height="400px" width="100%" src="https://replit.com/@ritza/Wordle?embed=true" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>
