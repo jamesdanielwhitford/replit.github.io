@@ -6,7 +6,6 @@ In this tutorial, we will detail how you can use Replit to write and publish a b
     <source src="/images/tutorials/40-multiuser-blog-nix/blogdemo.mp4" type="video/mp4">
 </video>
 
-
 After this tutorial, you will:
 
 * Be familiar with setting up a static website using Hugo.
@@ -49,12 +48,11 @@ hugo new site --force .
 
 This will create a new Hugo site in our repl. The `--force` flag is necessary because Hugo usually doesn't like creating new sites in directories that already contain files.
 
-You should now see a number of new directories and files in your repl's filepane. This is the skeleton of your Hugo site. Don't worry about what each of these files and directories are for – you only need to know about a few of them to start blogging, and we'll explain them as we go.
+You should now see a number of new directories and files in your repl's file pane. This is the skeleton of your Hugo site. Don't worry about what each of these files and directories is for – you only need to know about a few of them to start blogging, and we'll explain them as we go.
 
 <img src="/images/tutorials/40-multiuser-blog-nix/hugo-files.png"
     alt="hugo files"
     style="width: 40% !important;"/>
-
 
 Because Hugo is highly flexible and unopinionated, it doesn't even come with a default theme, so we won't be able to see our site in action until we choose one. There are a large number of choices on [Hugo's official themes website](https://themes.gohugo.io/). For this tutorial, we'll be using [Radek Kozieł](https://radoslawkoziel.pl/)'s [Terminal](https://themes.gohugo.io/themes/hugo-theme-terminal/) theme, but feel free to pick a different one later.
 
@@ -73,7 +71,7 @@ theme = 'hugo-theme-terminal'
 We must now configure our repl to host our static site so that we can see the results of our work. If you're familiar with static site generators (perhaps from a [previous tutorial](https://docs.replit.com/tutorials/16-static-site-generator)), you'll know that this is a two-step process:
 
 1. Render content in markdown and insert it into theme templates to create HTML pages.
-2. Host those HTML pages on a webserver.
+2. Host those HTML pages on a web server.
 
 Hugo includes a built-in command that does both, [`hugo server`](https://gohugo.io/commands/hugo_server/). We can make this the command that executes when we click our repl's run button by editing the `run` directive in the `.replit` file as below:
 
@@ -84,7 +82,7 @@ run = "hugo server --buildDrafts --buildFuture --bind 0.0.0.0 --port 443 --baseU
 In this command:
 
 * `--buildDrafts` and `--buildFuture` will ensure that all site content is rendered, even if it's marked as a draft or scheduled for publishing in the future.
-* `--bind` `--port` and `--baseURL` are all used to [ensure that our repl will host our site correctly](https://docs.replit.com/hosting/deploying-http-servers). Make sure to modify the argument for `--baseURL` as indicated i.e. replacing the placeholders `YOUR-REPL-NAME-HERE` and `YOUR-USERNAME-HERE` with your own values.
+* `--bind` `--port` and `--baseURL` are all used to [ensure that our repl will host our site correctly](https://docs.replit.com/hosting/deploying-http-servers). Make sure to modify the argument for `--baseURL` as indicated (i.e. replacing the placeholders `YOUR-REPL-NAME-HERE` and `YOUR-USERNAME-HERE` with your own values).
 
 Run your repl. You should see an empty site homepage.
 
@@ -115,7 +113,6 @@ description = ""
 showFullContent = false
 readingTime = false
 +++
-
 ```
 
 The text between the `+++` lines is called [front matter](https://gohugo.io/content-management/front-matter/) and defines metadata for your post, such as its title, author and time posted. Post content can be added as markdown-formatted text below the final `+++`. Add some now.
@@ -137,10 +134,9 @@ readingTime = false
 ## Hello world!
 
 This *is* **my** `first` post!
-
 ```
 
-![Post Content](/images/tutorials/40-multiuser-blog-nix/post-content.png)
+![Post content](/images/tutorials/40-multiuser-blog-nix/post-content.png)
 
 ## Preparing for production
 
@@ -148,7 +144,7 @@ We now have a functional workspace in which to develop our site, but we need to 
 
 Hugo stores content templates in a directory called [archetypes](https://gohugo.io/content-management/archetypes/). You should see an empty directory with this name in your repl's file pane. Archetype files are named after the content type (e.g. post or page) they're used for – currently, our `archetypes` directory only has a single file, named `default.md`, which will be used for content types without custom archetypes. However, if you look at the contents of `default.md`, you'll notice that it looks nothing like the post we created above. This is because Hugo doesn't just look for archetypes in our site skeleton, but also in our chosen theme.
 
-You should find a file named `posts.md` in `themes/hugo-terminal-theme/archetypes/posts.md`. The contents of this file will resemble the new post you made in the last section. Duplicate this file, move it into your top-level `archetypes` directory, and rename it to `posts.md`. Then, in the new file, add the line `draft = true` just above the final `+++`. Your `archetypes/posts.md` file should look like this:
+You should find a file named `posts.md` in `themes/hugo-terminal-theme/archetypes/`. The contents of this file will resemble the new post you made in the last section. Duplicate this file, move it into your top-level `archetypes` directory, and rename it to `posts.md`. Then, in the new file, add the line `draft = true` just above the final `+++`. Your `archetypes/posts.md` file should look like this:
 
 ```md
 +++
@@ -164,7 +160,6 @@ showFullContent = false
 readingTime = false
 draft = true
 +++
-
 ```
 
 If a file in a top-level directory has the same name as a file in the equivalent theme directory, the former will override the latter. This allows us to make site-specific tweaks without changing our theme. Create a new post by entering the following command into your repl's shell:
@@ -175,12 +170,11 @@ hugo new posts/second-post.md
 
 This post and all subsequent new posts will be marked as drafts, and will thus only be included in our website if we run Hugo with the `--buildDrafts` flag. This will be useful for when we create our production repl. But before we can do that, we need to prepare this development repl to connect to it by creating a GitHub repository.
 
-Select the version control tab in your repl's side-pane and click on **Create a Git Repo**. This will create a local repository to track your code changes. From here, you can create snapshots of your code (called commits), which can you can revert to if needed.
+Select the version control tab in your repl's side pane and click on **Create a Git Repo**. This will create a local repository to track your code changes. From here, you can create snapshots of your code (called commits), which can you can revert to if needed.
 
 <img src="/images/tutorials/40-multiuser-blog-nix/create-repo.png"
     alt="Creating a GitHub repo"
     style="width: 40% !important;"/>
-
 
 To push our repl to a repository on GitHub, we'll need a GitHub account. [Create one](https://github.com/signup) if you haven't before. Once you've created an account or logged into your existing one, return to your repl and click on **Connect to GitHub**. Accept the Oauth confirmation message that appears.
 
@@ -242,23 +236,23 @@ Let's test out our publishing flow.
 3. From the **development** repl's version control tab, commit and push your changes.
 4. In your **production** repl, navigate to the version control tab and click on the "← Pull" link. This will pull the changes we just pushed from development.
 
-    <img src="/images/tutorials/40-multiuser-blog-nix/pull.png" alt="Pull from GitHub" style="width: 40% !important;"/>
+<img src="/images/tutorials/40-multiuser-blog-nix/pull.png" alt="Pull from GitHub" style="width: 40% !important;"/>
 
-6. Rerun your **production** repl. You should now see the contents of the second blog post live on the website.
+5. Rerun your **production** repl. You should now see the contents of the second blog post live on the website.
 
 This will be your workflow for publishing posts. Undraft, commit and push on development, then pull and rerun on production.
 
 If you have a paid Replit plan, you should set your production repl as [Always-on](https://docs.replit.com/hosting/enabling-always-on), so that people will always be able to reach your website.
 
-You will probably also want to use a custom domain name, instead of `blog.your-name.repl.co`. Instructions for [setting this up are provided here](https://docs.replit.com/hosting/hosting-web-pages#custom-domains). As a bonus, following this process will also put your site behind [Cloudflare](https://www.cloudflare.com/)'s content delivery network (CDN), improving its performance and reachability across the global internet. Cloudflare is [free for personal and hobby projects](https://www.cloudflare.com/plans/#overview).
+You will probably also want to use a custom domain name, instead of `blog.your-name.repl.co`. Instructions for setting this up are provided [here](https://docs.replit.com/hosting/hosting-web-pages#custom-domains). As a bonus, following this process will also put your site behind [Cloudflare](https://www.cloudflare.com/)'s content delivery network (CDN), improving its performance and reachability across the global internet. Cloudflare is [free for personal and hobby projects](https://www.cloudflare.com/plans/#overview).
 
 ## Writing posts
 
 Now that we have a publishing platform in place, let's take a more detailed look at how to create content in Hugo.
 
-The basis of all Hugo blogs is Markdown, a simple mark-up language for the web, [originally created in 2004 by John Gruber](https://daringfireball.net/projects/markdown/). Markdown provides a simple, limited syntax, focused on the common needs of bloggers and other web-based writers. Basic Markdown elements are limited to headings, **bold**, `italic` and `code-style` text, blockquotes, lists, code blocks, horizontal rules, links and images. Markdown has been extended over the years to provide more advanced formatting, such as tables and footnotes. A cheat sheet covering both basic and extended [syntax can be found here](https://www.markdownguide.org/cheat-sheet/) (Hugo supports both basic and extended Markdown).
+The basis of all Hugo blogs is [Markdown](https://daringfireball.net/projects/markdown/), a simple mark-up language for the web, originally created in 2004 by John Gruber. Markdown provides a simple, limited syntax, focused on the common needs of bloggers and other web-based writers. Basic Markdown elements are limited to headings, **bold**, *italic* and `code-style` text, blockquotes, lists, code blocks, horizontal rules, links and images. Markdown has been extended over the years to provide more advanced formatting, such as tables and footnotes. A cheat sheet covering both basic and extended syntax can be found [here](https://www.markdownguide.org/cheat-sheet/) (Hugo supports both basic and extended Markdown).
 
-To include images in your posts, upload them to the `static` directory. All files and subdirectories in `static` will be rendered as-is from our website's root URL. For example, if you create a file named `static/images/pic.png`, you will be able to include it in your posts by writing `![](/images/pic.png)`. You can put anything you want in `static`, including documents, audio files, or even videos.
+To include images in your posts, upload them to the `static` directory. All files and subdirectories in `static` will be rendered as-is from your website's root URL. For example, if you create a file named `static/images/pic.png`, you will be able to include it in your posts by writing `![](/images/pic.png)`. You can put anything you want in `static`, including documents, audio files, or even videos.
 
 If you want formatting that isn't included in Markdown, such as colored text, you can add HTML and CSS to your posts directly, but first you must configure Hugo's Markdown parser (Goldmark) to accept unsafe input. Add the following lines to `config.toml`:
 
@@ -271,11 +265,11 @@ Stop and start your repl for the config change to take effect.
 
 Hugo also provides functionality called [shortcodes](https://gohugo.io/content-management/shortcodes/), which you can think of as HTML [macros](https://en.wikipedia.org/wiki/Macro_(computer_science)). Hugo provides built-in shortcodes for common tasks such as embedding [tweets](https://gohugo.io/content-management/shortcodes/#tweet) and [YouTube videos](https://gohugo.io/content-management/shortcodes/#youtube). You can also [create your own custom shortcodes](https://gohugo.io/templates/shortcode-templates/).
 
-Replit's multiplayer editing features aren't only good for collaborative programming, but can also be used for collaborative blogging. Multiple users can work in the same file in real-time, and you can use [inline code threads](https://blog.replit.com/threads) to leave each other feedback and discuss individual words and sentences.
+Replit's multiplayer editing features aren't only good for collaborative programming, but can also be used for collaborative blogging. Multiple users can work in the same file in real time, and you can use [inline code threads](https://blog.replit.com/threads) to leave each other feedback and discuss individual words and sentences.
 
 ![Collaboration chat](/images/tutorials/40-multiuser-blog-nix/thread.png)
 
-If you need to include diagrams in your blog posts, you can draw them using [your repl's built-in Excalidraw](https://blog.replit.com/draw). Just create a new file with a `.draw` extension and start diagramming. When you're done, select your diagram, right-click and chose "Copy to clipboard as SVG". Then paste into the post you want to include the diagram in. Note that the Goldmark must be configured in the manner shown above for this to work, as SVG images are part of HTML.
+If you need to include diagrams in your blog posts, you can draw them using your repl's [built-in Excalidraw](https://blog.replit.com/draw). Just create a new file with a `.draw` extension and start diagramming. When you're done, select your diagram, right-click and chose "Copy to clipboard as SVG". Then paste into the post you want to include the diagram in. Note that Goldmark must be configured in the manner shown above for this to work, as SVG images are part of HTML.
 
 <img src="/images/tutorials/40-multiuser-blog-nix/diagram.png"
 alt="Drawing on Replit"
