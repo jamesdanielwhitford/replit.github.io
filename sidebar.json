@@ -483,7 +483,7 @@
       },
       {
         "name": "Multi-user static blog with Nix",
-        "slug": "40-multiuser-static-blog-with-nix"
+        "slug": "40-build-host-company-blog-on-replit-with-hugo-nix"
       },
       {
         "name": "Pinboard project part 1: HTML & CSS",

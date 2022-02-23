@@ -1,4 +1,4 @@
-# Run a multi-user static blog on Replit with Nix and Hugo
+# Build and host your company blog on Replit with Nix and Hugo
 
 In this tutorial, we will detail how you can use Replit to write and publish a blog or website. This can be a solo endeavour or a group or company blog. We'll build on the versatile Nix repl, using a static site generator called [Hugo](https://gohugo.io/) to ensure our site is fast, secure and flexible. We'll also use some repl tricks which will allow us to develop and host our blog without ever leaving Replit.
 
