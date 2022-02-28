@@ -14,7 +14,7 @@ We'll use Excalidraw to demonstrate the following different kinds of diagrams:
 
 ## Getting started with Excalidraw
 
-To use Excalidraw, navigate to your team's Pro [dashboard](https://replit.com/teams). Click on the "Create Team Repl" button to create a new repl. Choose a template language for the repl and name it.
+To use Excalidraw, navigate to your team's Pro [dashboard](https://replit.com/teams). Click on the "Create Team Repl" button to create a new repl. Choose a template language for the repl (any will do as we will create a `.draw` file separately).
 
 ![create repl](/images/teamsPro/excalidraw/create-repl.png)
 
@@ -22,14 +22,11 @@ This will direct you to the Replit workspace.
 
 In the workspace, click on the "Add file" icon next to "Files". Choose a name for your file and then add the ".draw" extension at the end.
 
-![save file](/images/teamsPro/excalidraw/save-file.png)
+![Create draw file](/images/teamsPro/excalidraw/create-draw.png)
 
 Replit will open up the ".draw" file once you save it and you'll see the drawing environment on your editing pane.
 
-Notice a navbar at the top that consists of various elements to choose from.  
-
-![draw hello](/images/teamsPro/excalidraw/hello.png)
-
+Notice the navbar at the top that consists of various elements to choose from.  
 
 ## Draw: code architecture diagram
 
@@ -53,7 +50,6 @@ Using Excalidraw, we can design a flowchart of this program. We'll use the "elli
 
 By following our diagram, we now know what to include in our code when designing our program. This lets us create programs more efficiently because we can follow a clearly defined structure when implementing the code.
 
-
 ## Draw: database architecture diagram
 
 Teams would benefit from using Excalidraw when demonstrating the infrastructure of existing systems such as a database management system. They can show how their applications interact with their databases to store and attain data. 
@@ -62,25 +58,19 @@ Let's demonstrate this with a database architecture diagram.
 
 We'll create a new file and save it as "database.draw". You can add a variety of design elements to your diagrams by importing libraries. We want to use the following three libraries from [excalidraw](https://www.excalidraw.com) for our diagram: Software Logos, Databases, Awesome icons.
 
-Go to this site [excalidraw.com](https://www.excalidraw.com) and next to the drawing tools navbar, click on the "book" icon.
+Go to the [excalidraw.com](https://www.excalidraw.com) homepage and, next to the drawing tools navbar, click on the "book" icon. In the pop-up, click on "Browse libraries" to select from a range of different categories. 
 
-![library icon](/images/teamsPro/excalidraw/lib-icon.png)
+Once you find the category with the elements you would like to use, click "Add to Excalidraw" to import that library to the site's workspace.
 
-In the pop-up, click on "Browse libraries" to select from a range of different categories. 
+![browse libraries](/images/teamsPro/excalidraw/add-library.png)
 
-![browse libraries](/images/teamsPro/excalidraw/browse-lib.png)
-
-Once you find the category with the elements you would like to use, click "Add to Excalidraw" to import that library to the site's workspace. Then choose the element you want, right-click on it and select copy.  
-
-![software library](/images/teamsPro/excalidraw/software-lib.png)
-
-Once it is copied, go back to your repl and in the ".draw" file you're working on, right-click and select paste to import the element you copied from the site.
+You can add any elements you want from these contributed libraries and then copy them across to your repl file using `Ctrl + C` `Ctrl + V` (or `CMD + C` `CMD + V` on macOS).
 
 Using the "Awesome icons" library, we have elements to represent the users of the software application, and with the "Software logos" and "Database" libraries we have database and developer icons.
 
 These elements enhance the diagram and make it more interesting to define the composition of the database system. The resulting diagram would look as follows:
 
-![database](/images/teamsPro/excalidraw/database(1).png)
+![database](/images/teamsPro/excalidraw/database-diagram.png)
 
 ## Things to try
 
@@ -88,15 +78,9 @@ There are so many different kinds of diagrams to try with Excalidraw. We can des
 
 Take a look at this portfolio layout design. 
 
-![Website](/images/tutorials/excalidraw/website.png)
+![Website](/images/teamsPro/excalidraw/website.png)
 
 Using the "Web Kit" library, we added the layout template of a portfolio website and added icons from other libraries, such as the "Awesome icons" for the user icon that represents an image.
 
 There are wireframing libraries that would make Excalidraw ideal for UI/UX designers as well.
-
-Challenge yourself:
-
-* Can you design a website for an e-commerce store?
-* Create a data graph
-* Design a mobile application interface
 
