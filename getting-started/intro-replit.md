@@ -1,5 +1,14 @@
 # Introduction to Replit
 
+<div class="row">
+  <div class="column">
+    <img src="/images/build.png" alt="Snow" style="width:100%">
+  </div>
+  <div class="column">
+    <img src="/images/teach.png" alt="Forest" style="width:100%">
+  </div>
+</div>
+
 Replit is a coding platform that lets you write code and host apps. It also has many educational features built-in, making it great for teachers and learners too.
 
 You can use Replit in different ways. It can replace some or all of your:
