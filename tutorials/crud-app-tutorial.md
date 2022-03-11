@@ -70,7 +70,7 @@ This will be the secret key for the application. Save the secret key as an envir
 Then create a list of Replit usernames belonging to the team member's who should have access to the application:
 
 ```python
-Users = ["your_usernames_here"]
+USERS = ["your_usernames_here"]
 ```
 Import the following modules:
 
@@ -82,7 +82,7 @@ Then add a helper and a decorator function to check whether the user is in the u
 
 ```Python
 def is_admin(username):
-    return username in ADMINS
+    return username in USERS
 
 def admin_only(f):
     @wraps(f)
