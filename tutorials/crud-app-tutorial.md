@@ -54,7 +54,7 @@ if __name__ == "__main__":
 
 This basic flask application will ask users to login into their Replit account before accessing the application. You can run the application to see the login request page before accessing the app. 
 
-Next, create a list of admins or team members that will be allowed access to manage the tasks. Add the following line below `app = Flask(__name__)` to initialize a secret key:
+Next, create a list of users or team members that will be allowed access to manage the tasks. Add the following line below `app = Flask(__name__)` to initialize a secret key:
 
 ```python
 app.config["SECRET_KEY"] = os.environ['SECRET_KEY']
@@ -70,7 +70,7 @@ This will be the secret key for the application. Save the secret key as an envir
 Then create a list of Replit usernames belonging to the team member's who should have access to the application:
 
 ```python
-ADMINS = ["your_usernames_here"]
+Users = ["your_usernames_here"]
 ```
 Import the following modules:
 
@@ -78,7 +78,7 @@ Import the following modules:
 from functools import wraps
 from flask import flash, url_for, render_template
 ```
-Then add a helper and a decorator function to check whether the user is admin and enable access if it is.
+Then add a helper and a decorator function to check whether the user is in the users list and enable access if it is.
 
 ```Python
 def is_admin(username):
