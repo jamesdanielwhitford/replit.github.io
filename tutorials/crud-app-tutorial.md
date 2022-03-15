@@ -1,27 +1,24 @@
 crud-app-tutorial
 
-# Building internal tools with Replit
+# Persistent Data Storage with Replit: Building a Flask application with a SQLite database
 
-In this tutorial, we'll use Flask, SQLite for data storage, and SQlalchemy to create a task management app for a team, that allows team members to perform CRUD operations on the SQLite database and persist the data even if our application is shutdown. 
+In this tutorial, We will show you how to create a task management app for teams, that uses a perisistent storage system. We'll use Flask as the template engine for our app, SQLite for data storage, and SQlalchemy to create a connection to the database. By using persistent storage, we can persist data even if our application is shutdown. 
 
-At the end of the tutorial, you should have an idea of:
+At the end of the tutorial, you should have an idea of how to:
 
-* What is persistent data?
-* How to create app authentication
-* How to set up a database
-* How to read data from a CSV file
-* How to perform CRUD operations on the app
+* Persistent data
+* Create user authorization
+* Set up a SQLite database
+* Read data from a CSV file and insert it to the database
+* Implement CRUD operations for the application
 
 You can find the code for this tutorial at https://replit.com/@ritza/task-manager-app or check out the embedded repl below.
 
 
-## Persistent Data
-
-We will create an application  that uses a perisitent storage system to persist data even when our application is no longer running.
 
 ## Getting started with the code
 
-Start a new team repl and Choose python as the template language.
+Navigate to your teams pro dashboard and start a new team repl and Choose python as the template language.
 
 ![create-repl image](create_repl.png)
 
@@ -36,7 +33,7 @@ from replit import web
 from flask import Flask
 ```
 
-The "web" module is used for authentication so that only users with a replit account can get access to the application, "Flask" is used to send data through HTTP requests to our code, and "SQLAlchemy" to map our Python objects to the database.
+The Replit "web" module is used for Replit account authentication so that only team members with a replit account can get access to the application. "Flask" is used to send data through HTTP requests to our code.
 
 Initialize a flask application, with the following code:
 
@@ -52,25 +49,29 @@ if __name__ == "__main__":
     web(app.run(host='0.0.0.0', debug=True))
 ```
 
-This basic flask application will ask users to login into their Replit account before accessing the application. You can run the application to see the login request page before accessing the app. 
+This basic flask application will ask users to login into their Replit account before accessing the application. You can run the application to see the account login request page before accessing the app. 
 
-Next, create a list of users or team members that will be allowed access to manage the tasks. Add the following line below `app = Flask(__name__)` to initialize a secret key:
+Next, we want to generate  a secret key for the app so that no one else can use our account. Add the following line of code below `app = Flask(__name__)` to initialize a secret key:
 
 ```python
 app.config["SECRET_KEY"] = os.environ['SECRET_KEY']
 ```
+We will generate a random string to use as the secret key
+Open up the console and type the following code to generate string of random numbers:
 
-Open up the console and type `import random, string`, then type `''.join(random.SystemRandom().choice(string.ascii_uppercase + string.digits) for _ in range(20))
-` to generate string of random numbers.
+```Python
+>>>import random, string
+>>>''.join(random.SystemRandom().choice(string.ascii_uppercase + string.digits) for _ in range(20))
+```
 
-This will be the secret key for the application. Save the secret key as an environment variable in the "Secrets(environment variables)" tab on the left panel. 
+This will outut a random string, Save it as the secret key and add it as an environment variable in the "Secrets(environment variables)" tab on the left panel. 
 
 ![secret key](secret_key.png)
 
-Then create a list of Replit usernames belonging to the team member's who should have access to the application:
+Then create a list of Replit usernames belonging to the team members who will be allowed access to the application by adding their usernames to the list for example:
 
 ```python
-USERS = ["your_usernames_here"]
+USERS = ["alex12","Kimbly2","Leerio"]
 ```
 Import the following modules:
 
@@ -78,23 +79,23 @@ Import the following modules:
 from functools import wraps
 from flask import flash, url_for, render_template
 ```
-Then add a helper and a decorator function to check whether the user is in the users list and enable access if it is.
+The functools module will be used for creating a helper function `is_user()` and a decorator function `user_only()`to check whether the user is in the users list and enable access if it is.
 
 ```Python
-def is_admin(username):
+def is_user(username):
     return username in USERS
 
-def admin_only(f):
+def user_only(f):
     @wraps(f)
-    def decorated_function(*args, **kwargs):
-        if not is_admin(web.auth.name):
+    def verify_user(*args, **kwargs):
+        if not is_user(web.auth.name):
             flash("Permission denied.", "warning")
             return render_template(url_for("index"))
         return f(*args, **kwargs)
-    return decorated_function
+    return verify_user
 
 ```
-Add the annotation `@admin_only` just above the `index()` function in the `main.py` file.
+Add the annotation `@user_only` just above the `index()` function in the `main.py` file.
 
 In the root directory of the project, add a new folder and save it as "templates", inside it create a new File and save it as "index.html".
 
@@ -185,7 +186,7 @@ Modify the `index()`function to look like this:
 ```Python
 @app.route("/", methods=["GET", "POST"])
 @web.authenticated
-@admin_only
+@user_only
 def index():
  
     if request.form:
@@ -385,7 +386,7 @@ We added the update and delete forms to the "index.html" file. Next, add their f
 ```Python
 @app.route("/update", methods=["POST"])
 @web.authenticated
-@admin_only
+@user_only
 def update():
     oldTeamMember = request.form.get("oldTeamMember")
     newTeamMember = request.form.get("newTeamMember")
@@ -396,7 +397,7 @@ def update():
 
 @app.route("/delete", methods=["POST"])
 @web.authenticated
-@admin_only
+@user_only
 def delete():
     task_id = request.form.get("task_id")
     task = Task.query.filter_by(task_id=task_id).first()
