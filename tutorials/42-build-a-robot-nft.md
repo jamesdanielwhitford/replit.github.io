@@ -531,3 +531,4 @@ We're done with our contract code. In the second part of this tutorial, we'll bu
 * Tweak the breeding algorithm.
 * Introduce a [siring mechanism](https://medium.com/cryptokitties/siring-your-kitties-for-fun-and-profit-b6c8f0fc3860) that allows users to breed ReplBots they don't own.
 
+<iframe height="400px" width="100%" src="https://replit.com/@ritza/ReplBots?embed=true" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>
