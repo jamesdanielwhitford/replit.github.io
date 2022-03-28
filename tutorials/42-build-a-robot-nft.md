@@ -18,7 +18,7 @@ We need two things to get started with this project: a Solidity repl and a brows
 
 Sign in to [Replit](https://replit.com) or [create an account](https://replit.com/signup) if you haven't already. Once logged in, create a Solidity starter repl.
 
-![](/images/tutorials/42-robot-nft-ethereum/solidity-repl.png)
+![Creating a new Repl](/images/tutorials/42-robot-nft-ethereum/solidity-repl.png)
 
 The Solidity starter repl works a little differently from other repls you may have used in the past. Rather than running our repl every time we want to test out a new piece of code, we can run our repl once, to start it up, and it will automatically reload when changes are made to our Solidity code in contract.sol.
 
@@ -26,11 +26,16 @@ The Solidity starter repl comes with a friendly web interface, built using the [
 
 ### Browser wallet
 
-We will need a browser-based web3 wallet to interact with the Replit testnet and our deployed contracts. MetaMask is a popular and feature-rich wallet implemented as a WebExtension. You can install it from MetaMask's download page. Make sure you're using a supported browser – either Chrome, Firefox, Brave or Edge.
+We will need a browser-based web3 wallet to interact with the Replit testnet and our deployed contracts. [MetaMask](https://metamask.io) is a popular and feature-rich wallet implemented as a WebExtension. You can install it from MetaMask's [download page](https://metamask.io/download/). Make sure you're using a supported browser – either Chrome, Firefox, Brave or Edge.
 
 Once you've installed MetaMask, follow the prompts to create a wallet and sign in. MetaMask will give you a 12-word *secret recovery phrase* – this is your wallet's private key, and must be kept safe and secret. If you lose this phrase, you will not be able to access your wallet. If someone else finds it, they will.
 
 If you're already using MetaMask, we recommend creating a new account for testing with Replit. You can do this from the account menu, which appears when you click on the account avatar in the top right corner of the MetaMask interface.
+
+<img src="/images/tutorials/42-robot-nft-ethereum/createaccount.png"
+alt="Create new metamask account"
+style="Width: 50% !important;"/>
+
 
 ## Introduction to smart contract development
 
@@ -50,12 +55,22 @@ Solidity, which we will be using below, is the most popular language for develop
 
 Our Replbot NFT will consist of a base robot and three accessories. The base robot looks like this:
 
-![](/images/tutorials/42-robot-nft-ethereum/bothead-01.svg)
+
+<img src="/images/tutorials/42-robot-nft-ethereum/bothead-01.svg"
+alt="Base robot"
+style="Width: 60% !important;"/>
 
 Each NFT will have three different colors for its frame, visor and background. Each NFT will also have three different accessories: headgear (a hat or wig), eargear (animal ears or headphones) and facegear (glasses or masks). Some examples:
 
-![](/images/tutorials/42-robot-nft-ethereum/replbot-nft-1.svg)
-![](/images/tutorials/42-robot-nft-ethereum/replbot-nft-2.svg)
+<img src="/images/tutorials/42-robot-nft-ethereum/replbot-nft-1.svg"
+alt="NFT 1"
+style="Width: 60% !important;"/>
+
+
+<img src="/images/tutorials/42-robot-nft-ethereum/replbot-nft-2.svg"
+alt="NFT 2"
+style="Width: 60% !important;"/>
+
 
 Which colors and accessories each NFT has will be randomly determined at creation time.
 
@@ -169,7 +184,7 @@ Next, we'll create a [struct](https://docs.soliditylang.org/en/v0.8.10/types.htm
     }
 ```
 
-Each color will have a red, green and blue component, represented as an 8-bit unsigned integer. Most unsigned integers we work within contracts are 256-bit, to the point that Solidity provides the alias `uint` for `uint256`. However, it is good practice to use smaller values where possible, due to gas costs – this is known as [tight variable packing](https://fravoll.github.io/solidity-patterns/tight_variable_packing.html). An 8-bit unsigned integer can contain a value from 0 to 255, which is precisely the range we need for storing standard RGB values.
+Each color will have a red, green and blue component, represented as an 8-bit unsigned integer. Most unsigned integers we work with in contracts are 256-bit, to the point that Solidity provides the alias `uint` for `uint256`. However, it is good practice to use smaller values where possible, due to gas costs – this is known as [tight variable packing](https://fravoll.github.io/solidity-patterns/tight_variable_packing.html). An 8-bit unsigned integer can contain a value from 0 to 255, which is precisely the range we need for storing standard RGB values.
 
 Next, we'll create a struct for the ReplBot itself, consisting of our three colors and three accessories. Add this code below the previous struct definition.
 
@@ -238,7 +253,7 @@ When we define our `Color` structs, we specify the [data location](https://docs.
 
 Once that's done, we create the ReplBot struct, assign it to our token ID through the mapping, and then mint the token.
 
-However, if you try to compile this code, you'll notice that `_random()` is not defined. Unlike many traditional languages, Solidity has no native way of generating [psuedorandom numbers](https://en.wikipedia.org/wiki/Pseudorandomness). So we'll need to define one ourselves.
+However, if you try to compile this code, you'll notice that `_random()` is not defined. Unlike many traditional languages, Solidity has no native way of generating [pseudorandom numbers](https://en.wikipedia.org/wiki/Pseudorandomness). So we'll need to define one ourselves.
 
 [Randomness in Ethereum contracts](https://fravoll.github.io/solidity-patterns/randomness.html) is a difficult thing to get right, and one that can be dangerous if done wrong, depending on what it's used for. If you've delved into randomness in other languages, you'll know that the random numbers we use in programming are usually only pseudorandom, originating from a [predetermined seed](https://en.wikipedia.org/wiki/Random_seed), or based on the time of execution. This is okay when we're generating a Minecraft world, but presents problems for, say, a blockchain-based lottery. Because Ethereum is a transparent and distributed network, we have no way to hide a seed, and values like the current time can be [manipulated by miners](https://cryptomarketpool.com/block-timestamp-manipulation-attack/) looking to profit.
 
@@ -268,7 +283,7 @@ Finally, we convert this hash into an unsigned integer, to be returned as our fi
 
 ## Viewing token data
 
-Now that we can generate tokens with interesting-looking ReplBots, we need a way of retrieving information about them, so that we'll be able to display them on the web3 frontend we'll build in Part 2 of this tutorial. To this end, we'll write two functions: `botAccessories` and `botColors`. These will be externally callable view functions that will take the token ID and return three strings, detailing its accessorries and colors respectively. As external calls to view functions are free, we don't have to worry too much about gas costs in these functions.
+Now that we can generate tokens with interesting-looking ReplBots, we need a way of retrieving information about them, so that we'll be able to display them on the web3 frontend we'll build in Part 2 of this tutorial. To this end, we'll write two functions: `botAccessories` and `botColors`. These will be externally callable view functions that will take the token ID and return three strings, detailing its accessories and colors, respectively. As external calls to view functions are free, we don't have to worry too much about gas costs in these functions.
 
 Enter the followed code between the definitions of `mint()` and `_random()`.
     
@@ -338,18 +353,16 @@ Now that we've implemented our NFT's core functionality, it's time to deploy to 
 
 First, run your repl. Once all of the dependencies are installed, you should see the Replit Ethereum web interface in your repl's browser. It looks like this:
 
-![](/images/tutorials/42-robot-nft-ethereum/repl-eth-web.png)
+![REPL Ethereum web interface](/images/tutorials/42-robot-nft-ethereum/repl-eth-web.png)
 
 Connect your MetaMask wallet to the web interface and switch to the Replit testnet. Then click the link to get 1 ETH for testing. Wait until 1 ETH shows up in your wallet balance on the top right of the page.
 
-![](/images/tutorials/42-robot-nft-ethereum/switch-to-test.png)
-![](/images/tutorials/42-robot-nft-ethereum/get-one.png)
+![Switching to test](/images/tutorials/42-robot-nft-ethereum/switch-to-test.png)
+![Getting one Ether](/images/tutorials/42-robot-nft-ethereum/get-one.png)
 
 Now you can deploy your contracts. Select "ReplBot" from the drop-down box and click **Deploy**. Approve the MetaMask pop-up that appears.
 
 Once this contract has been deployed, it will show up as an expandable box below the drop-down box. Expand it and take a look at all the different functions available.
-
-![](/images/tutorials/42-robot-nft-ethereum/deployed-nft.png) !!!note: I was unable to take this screenshot due to replit errors
 
 Mint your first NFT by navigating to the `mint` function. Click on your wallet address in the top right corner of the page to copy it, and then paste it into the `recipient` field. Then run the function and approve the MetaMask pop-up that appears.
 
@@ -359,7 +372,7 @@ If you mint again, you should receive a ReplBot with ID 1 and a different set of
 
 ## Breeding bots
 
-We can now mint ReplBots with random characteristics, which fulfills the specification we laid out at the start of this tutorial. But with a bit of additional code, we can introduce a second way to create ReplBots: breeding.
+We can now mint ReplBots with random characteristics, which fulfills the specification we laid out at the start of this tutorial. But with a bit of additional code, we can introduce a second way to create ReplBots, breeding.
 
 For our `breed` function, we'll accept two separate ReplBots owned by the caller and create a new one with the following characteristics:
 
@@ -421,7 +434,7 @@ Now we can start on our `breed()` function. Add the following code below the def
 
 We start our function off with some checks: the two parent IDs must be different, they must be owned by the function caller ([`msg.sender`](https://docs.soliditylang.org/en/v0.8.2/units-and-global-variables.html#block-and-transaction-properties)), and they must be in the same generation.
 
-Next comes our bot creation code, which will be similar to the code in our `mint()` function. Add the following code below the final `require()` statement above.
+Next comes our bot creation code, which will be similar to the code in our `mint()` function. Add the following code below the final `require()` statement in the `breed` function above.
 
 ```solidity
         // Increment token counter
@@ -489,12 +502,12 @@ Event definitions are commonly placed at the bottom of contracts. Add the follow
     event ReplBotBorn(address recipient, uint tokenId, uint parentOneId, uint parentTwoId, uint generation);
 ```
 
-Then insert and event emission near the end of your `mint()` function, as below:
+Then insert an event emission near the end of your `mint()` function, as below:
 
 ```solidity
         _safeMint(recipient, tokenId);
 
-        emit ReplBotCreated(recipient, tokenId); // <-- NEW
+        emit ReplBotCreated(recipient, tokenId); // <-- NEW LINE
 
         return tokenId;
 ```
@@ -504,20 +517,17 @@ And another one near the end of your `breed()` function:
 ```solidity
         _safeMint(recipient, tokenId);
 
-        emit ReplBotBorn(recipient, tokenId, parentOneId, parentTwoId, parentOne.generation + 1); // <-- NEW
+        emit ReplBotBorn(recipient, tokenId, parentOneId, parentTwoId, parentOne.generation + 1); // <-- NEW LINE
 
         return tokenId;
 ```
 
-## Where next?
+## Next steps
 
-We're done with our contract code. In the [second part of this tutorial](!!! LINK TBA), we'll build a dApp frontend for users to mint, view and breed ReplBot NFTs. If you'd like to spend a bit more time exploring Solidity first, here are some ways you might want to change and expand this contract:
+We're done with our contract code. In the second part of this tutorial, we'll build a dApp frontend for users to mint, view and breed ReplBot NFTs. If you'd like to spend a bit more time exploring Solidity first, here are some ways you might want to change and expand this contract:
 
 * Add more accessories. You'll need to draw these yourself!
 * Refactor the code to reduce the size of the contract and make individual functions more gas efficient. One quick way to do this would be to change the visibility of the `public` functions to `external`.
 * Tweak the breeding algorithm.
 * Introduce a [siring mechanism](https://medium.com/cryptokitties/siring-your-kitties-for-fun-and-profit-b6c8f0fc3860) that allows users to breed ReplBots they don't own.
 
-You can find our repl below:
-
-!!! repl embed
