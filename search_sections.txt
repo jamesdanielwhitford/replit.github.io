@@ -1,0 +1,19 @@
+# To index a subdirectory for site-wide search, list it here
+# Empty lines and lines beginning with # are ignored, and leading/trailing whitespace will be trimmed
+# Place the human readable name of the section to the left of a subdirectory, separated by a colon (:)
+
+Getting started : getting-started
+Introduction to Replit : intro-replit
+Programming & IDE : programming-ide
+Hosting : hosting
+Teams : teams
+Teams for Education : teams-edu
+Teams Pro (beta) : teams-pro
+Introduction to Teams Pro : intro-teams-pro
+Managing teams : managing-teams
+Settings : settings
+Legal and security information : legal-and-security-info
+Miscellaneous : misc
+Tutorials : tutorials
+Teaching Curriculum : teaching-curriculum
+Replit Books : replit-books
