@@ -31,8 +31,7 @@ Each repl is its own Docker container running in a VM, so you can run shell comm
 If you already know how to code and are interested in seeing how you can use Replit, go through the following pages:
 
 #### [Introduction to the IDE](/tutorials/01-introduction-to-the-repl-it-ide)
-This guide shows you how the IDE works. If you've used VS Code before, everything should feel familiar as
-our editor also uses [Monaco](https://microsoft.github.io/monaco-editor/).
+This guide shows you how the IDE works.
 
 #### [Working with Files](/tutorials/02-managing-files-using-repl-it)
 Each repl has a built-in file system, so you can upload existing files or create new ones, manually or programmatically.
