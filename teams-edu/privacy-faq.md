@@ -12,16 +12,17 @@ Naturally, we expect the [Teams for Education](https://replit.com/teams-for-educ
 - Replit ensures all contracts with third-parties are compliant with our internal policies.
 - Replit has a designated Data Protection Officer.
 - Replit values transparency and will update you about any changes to our policies.
+- Replit has enabled the use of [Cloudflare's family-friendly DNS resolver](https://blog.cloudflare.com/introducing-1-1-1-1-for-families/) to block adult and inappropriate content.
 
 Still have questions? Read on...
  
-**Can Replit be used in schools without disclosing students' personal information?**
+ **1. Can Replit be used in schools without disclosing students' personal information?**
 
 Yes. Using [Teams for Education](https://replit.com/teams-for-education), teachers can set up their own accounts and email students directly to invite them to use the service. Students can create accounts at no cost to them, and use Teams for Education without providing personal information like names or email addresses. All that is required is a unique username and password, and you are good to go! 
 
 *Note: You can code in any of our supported languages without needing to log in or share any information. You just won't get all the great extras available when you sign up. [Try coding in Python](https://replit.com/languages/python3) in a private browser window.*
 
-**How can I invite students and protect their privacy?**
+**2. How can I invite students and protect their privacy?**
 
 With [Teams for Education](https://replit.com/teams-for-education) and [Private Invites](/teams-edu/inviting-teachers-students), you can choose to generate a private invite link, which will protect the privacy of your students (including under 13-year olds). *Please note that students **must** be added using private invites for your team to be FERPA/COPPA compliant.*
 
@@ -29,41 +30,41 @@ When you share that link (for example by emailing it to your students outside of
 
 ![private invite](/images/teamsForEducation/privacy-invite-tooltip.png)
 
-**What data does Replit collect about students through Teams for Education?**
+**3. What data does Replit collect about students through Teams for Education?**
 
 We do not ask students to provide personal information during the sign up process. When students are invited to create an account on Replit, we only ask them to enter a username that does not include their real name. We do not ask them to provide their name, email address, or any other personal information during sign up. Like all online services, we receive Log Information (as defined in our [Privacy Policy](https://replit.com/site/privacy)) when students use the services.
 
 We do not allow students to post on our public forums. Students can still benefit from the forums, though, because they are not restricted from viewing them.
 
-**How does Replit use student data?**
+**4. How does Replit use student data?**
 
 We only use the student data we collect for the purposes for which it was provided to us – that is, to perform services for the school and otherwise support the internal operations of our service. You can read the [FTC’s COPPA FAQs](https://www.ftc.gov/tips-advice/business-center/guidance/complying-coppa-frequently-asked-questions-0) for more detail on what “support for internal operations” includes.
 
 We do not disclose student data to third parties other than our own subprocessors. We also implement appropriate technical, physical and administrative security measures to protect students’ information.
 
-**Can students under 13 use Replit in compliance with COPPA?**
+**5. Can students under 13 use Replit in compliance with COPPA?**
 
 Yes, with Teams for Education, students under 13 can use Replit in compliance with COPPA. As noted above, we do not ask students (including students under 13) to provide personal information during sign up and we do not allow them to post in our public forums. The only COPPA-covered personal information we collect from students under 13 is Log Information and, as noted above, we only use that information to provide services for the school and otherwise support the internal operations of our service. Because of this, “verifiable parental consent” is not required for students to use our service.
 
 In addition, and consistent with COPPA, we do not disclose student data to third parties other than our own subprocessors, and we implement appropriate measures to protect students’ information.
 
-**Can Replit be used in compliance with FERPA?**
+**6. Can Replit be used in compliance with FERPA?**
 
 Yes, when we contract with schools to use Teams for Education, we do not collect information about students that can be used to identify or contact them, such as a name and email address. We only collect student’s Log Information (as defined in our [privacy policy](https://replit.com/site/privacy)) and use this limited data for the purposes for which it was provided to us; that is, to perform services for the school and support our internal operations. We do not disclose data to third parties other than our own subprocessors.
 
-**Is Replit compliant with the GDPR?**
+**7. Is Replit compliant with the GDPR?**
 
 Yes, Replit is compliant with the [EU General Data Protection Regulation](https://gdpr-info.eu/) (GDPR). We are committed to protecting customer data and privacy. We take our obligations regarding data compliance seriously, and approach them transparently. Replit has engaged in a GDPR compliance review to make our practices consistent with the GDPR, in respect to the processing of EU personal data. For example, Replit maintains records of its processing activities, has a legal basis for each processing activity in which it engages, and uses a variety of technical, organizational, and physical measures to safeguard and protect data.  We also actively monitor our compliance efforts and seek to continuously improve them.  
 
-**How does Replit protect personal data provided by its EU customers and users?**
+**8. How does Replit protect personal data provided by its EU customers and users?**
 
 Replit executes a [Data Processing Agreement](https://replit.com/site/dpa) (DPA) with its EU entity customers, which contains all of the requirements of GDPR Article 28 and governs how Replit uses and protects personal data when the platform serves as a data processor to our controller customers. Moreover, with respect to individual end-users of Replit, Replit maintains a consumer-facing [Privacy Policy](https://replit.com/site/privacy) that provides transparent information about our information collection and processing activities consistent with the GDPR. Replit also enters into agreements with its subprocessors, binding them to contractual provisions designed to comply with the GDPR, and keeps an [updated list of its subprocessors](https://replit.com/site/subprocessors).
 
-**How does Replit transfer and store personal data from the EU?**
+**9. How does Replit transfer and store personal data from the EU?**
  
 As Replit is located in the United States, Replit stores the personal data we receives from EU customers on secure data servers hosted by reputable third parties in the United States.  To transfer personal data from the EU to the United States, Replit relies on a variety of transfer mechanisms as applicable to a particular transfer, such as EU Commission approved Standard Contractual Clauses, contractual necessity, and consent.  
 
-**What other privacy regulations and security frameworks is Replit compliant with?**
+**10. What other privacy regulations and security frameworks is Replit compliant with?**
 
 This list is **not exhaustive** and we will continue to update it over time. However, we have reviewed and are compliant with the following privacy regulations:
 - [Student Privacy Pledge 2020](https://studentprivacypledge.org/signatories/)
@@ -91,12 +92,18 @@ src="/images/teamsForEducation/Montana logo.png" style= "float:left; width:20%;"
 <div style="clear:both"></div>
 
 
-**Will Replit sign our university's, school's or district's Data Security or Privacy Agreement?**
+**11. Will Replit sign our university's, school's or district's Data Security or Privacy Agreement?**
 
 Yes. If you would like us to review your local privacy regulation or sign your organization's specific privacy policy, please email [sales@replit.com](mailto:sales@replit.com). 
 
 If you are a Local Educational Agency in the United States, our [U.S. Student Data Protection Addendum](/teams-edu/us-student-dpa) also applies. We are happy to send you a copy for comments/edits if you'd like.
 
-**Is all of the above information reflected in the Replit Privacy Policy?**
+**12. Is all of the above information reflected in the Replit Privacy Policy?**
 
 Yes, our [Privacy Policy](https://replit.com/site/privacy) reflects all of this information.
+
+**13. Does Replit block adult content in Teams for Education?**
+
+Yes. In 2021, Replit enabled the use of [Cloudflare's family-friendly DNS resolver](https://blog.cloudflare.com/introducing-1-1-1-1-for-families/) by default in all user repls, even outside of Teams for Eduation. You can read more about this update [on our blog](https://blog.replit.com/family-friendly-dns). Cloudflare’s website has more information on this resolver and the type of content it blocks. 
+
+Further, using Replit as a proxy to bypass school or parental filters violates our [Terms of Service](https://replit.com/site/terms). We actively shut down repls that do this, with both automated tools and manual intervention.

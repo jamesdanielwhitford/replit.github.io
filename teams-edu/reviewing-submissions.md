@@ -37,7 +37,7 @@ A comment box will pop up towards the right of the code. Type in a comment and p
 
 ![Comment box](/images/teamsForEducation/annotation-made.png)
 
-The student who created the repl will receive an in-app notification as well as an email with your comment. They'll be able to reply to the comment or modify the code accordingly.
+The student who created the repl will receive an in-app notification with your comment. They'll be able to reply to the comment or modify the code accordingly.
 
 You can also use familiar markdown syntax in threads and chat.
 

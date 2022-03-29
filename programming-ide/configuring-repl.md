@@ -9,6 +9,10 @@ run = ["cargo", "run"]
 # The default file opened in the editor.
 entrypoint = "src/main.rs"
 
+# Setting environment variables
+[env]
+FOO="foo"
+
 # Packager configuration for the Universal Package Manager
 # See https://github.com/replit/upm for supported languages.
 [packager]
@@ -54,7 +58,8 @@ The `.replit` file can also provide other configuration hints. The full specific
 - `run`: Command - Command that is executed when the run button is clicked
 - `language`: Reserved
 - `audio`: Boolean - Whether [system-wide audio](https://docs.replit.com/misc/playing-audio-replit) is enabled for this repl.
-- `packager`: Package management configuration.
+- `[env]`: Setting environment variables
+- `[packager]`: Package management configuration.
     - `afterInstall`: Command - Command that is executed after a new package is installed
     - `ignoredPaths`: List of Strings - List of paths to ignore while attempting to guess packages ([More about installing packages](https://docs.replit.com/repls/packages/#DirectImports))
     - `ignoredPackages`: List of strings - List of modules to never attempt to guess a package for, when installing packages ([More about installing packages](https://docs.replit.com/repls/packages/#DirectImports))

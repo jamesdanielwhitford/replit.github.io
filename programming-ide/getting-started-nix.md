@@ -5,8 +5,8 @@ Replit supports all programming languages through our integration with Nix. Our 
 To get started with Nix on Replit, you can fork one of the existing templates:
 
 * [Zig](https://replit.com/@ConnorBrewster/zig)
-* [Node.js 16](https://replit.com/@ConnorBrewster/nodejs16)
-* [Clojure](https://replit.com/@turbio/nixed-clojure)
+* [Node.js 16](https://replit.com/@replit/Nodejs-Beta)
+* [Clojure](https://replit.com/@replit/Clojure)
 * [C# Dotnet](https://replit.com/@turbio/dotnet)
 
 Once you have forked the template, there are 2 config files that you can use to customize the environment: 

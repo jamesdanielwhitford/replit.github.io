@@ -17,6 +17,7 @@ marked.setOptions({
 });
 
 const app = express();
+let tree = null;
 
 const getTree = async () =>
 	JSON.parse((await fs.readFile('./sidebar.json', 'utf8')));
@@ -26,11 +27,11 @@ const render = async (res, category, slug) => {
 	res.locals.rendered = await renderMarkdown(
 		path.join(__dirname, category, slug) + '.md',
 	);
-	const t = await getTree();
-	res.locals.sidebar = t;
+	
+	res.locals.sidebar = tree;
 	res.locals.active = category + '/' + slug;
 
-	const cobj = t.find(c => c.slug === category);
+	const cobj = tree.find(c => c.slug === category);
 	const dobj = cobj? cobj.contents.find(d => d.slug === slug) : {"name": slug}
 
   if (category === 'repls' && slug === 'intro') {
@@ -406,6 +407,7 @@ app.get('/:category/:slug', async (req, res) => {
 
 
 
-app.listen(3000, () => {
+app.listen(3000, async () => {
 	console.log('docs are running');
+    tree = await getTree()
 });
