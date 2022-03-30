@@ -1,4 +1,4 @@
-# Interviewing Candidates in Guest Mode
+# Interviewing candidates in guest mode
 
 You can use Replit to conduct technical interviews. The Teams Pro guest feature lets you pair program with candidates so you can work with them or observe them in real time.
 
