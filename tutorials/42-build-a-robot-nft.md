@@ -20,13 +20,13 @@ Sign in to [Replit](https://replit.com) or [create an account](https://replit.co
 
 ![Creating a new Repl](/images/tutorials/42-robot-nft-ethereum/solidity-repl.png)
 
-The Solidity starter repl works a little differently from other repls you may have used in the past. Rather than running our repl every time we want to test out a new piece of code, we can run our repl once, to start it up, and it will automatically reload when changes are made to our Solidity code in contract.sol.
+The Solidity starter repl works a little differently from other repls you may have used in the past. Rather than running our repl every time we want to test out a new piece of code, we can run our repl once, to start it up, and it will automatically reload when changes are made to our Solidity code in `contract.sol`.
 
-The Solidity starter repl comes with a friendly web interface, built using the [web3 Ethereum JavaScript API](https://web3js.readthedocs.io/en/v1.5.2/), which we will use to deploy and interact with our contracts. We will deploy to Replit's testnet, a custom version of the Ethereum blockchain managed by Replit and optimised for testing.
+The Solidity starter repl comes with a friendly web interface, built using the [web3 Ethereum JavaScript API](https://web3js.readthedocs.io/en/v1.5.2/), which we will use to deploy and interact with our contracts. We will deploy to Replit Testnet, a custom version of the Ethereum blockchain managed by Replit and optimised for testing.
 
 ### Browser wallet
 
-We will need a browser-based web3 wallet to interact with the Replit testnet and our deployed contracts. [MetaMask](https://metamask.io) is a popular and feature-rich wallet implemented as a WebExtension. You can install it from MetaMask's [download page](https://metamask.io/download/). Make sure you're using a supported browser – either Chrome, Firefox, Brave or Edge.
+We will need a browser-based web3 wallet to interact with the Replit Testnet and our deployed contracts. [MetaMask](https://metamask.io) is a popular and feature-rich wallet implemented as a WebExtension. You can install it from MetaMask's [download page](https://metamask.io/download/). Make sure you're using a supported browser – either Chrome, Firefox, Brave, or Edge.
 
 Once you've installed MetaMask, follow the prompts to create a wallet and sign in. MetaMask will give you a 12-word *secret recovery phrase* – this is your wallet's private key, and must be kept safe and secret. If you lose this phrase, you will not be able to access your wallet. If someone else finds it, they will.
 
@@ -43,7 +43,7 @@ Feel free to skip this section if you've written Solidity contracts before or co
 
 Now that we've got our repl and wallet set up, we can start developing. We will be writing contracts, which are the basic building blocks of Ethereum programs. An individual contract can have state variables and functions and can inherit from multiple other contracts. Contracts in Solidity are equivalent to classes in a language like Python or Java.
 
-Contracts on Ethereum and Ethereum-based networks (such as the Replit testnet and Binance Chain) are compiled to bytecode which runs on the [Ethereum Virtual Machine](https://ethereum.org/en/developers/docs/evm/) (EVM). This is similar to how Java code compiles to bytecode for the JVM.
+Contracts on Ethereum and Ethereum-based networks (such as the Replit Testnet and Binance Chain) are compiled to bytecode which runs on the [Ethereum Virtual Machine](https://ethereum.org/en/developers/docs/evm/) (EVM). This is similar to how Java code compiles to bytecode for the JVM.
 
 A list of opcodes for EVM is provided [here](https://ethervm.io/). Many of the opcodes dealing with arithmetic and logical operations should be familiar if you've worked with any kind of assembly before. The EVM also has opcodes for blockchain-specific operations, such as getting information about the current block or chain.
 
@@ -53,14 +53,14 @@ Solidity, which we will be using below, is the most popular language for develop
 
 ## NFT design
 
-Our Replbot NFT will consist of a base robot and three accessories. The base robot looks like this:
+Our ReplBot NFT will consist of a base robot and three accessories. The base robot looks like this:
 
 
 <img src="/images/tutorials/42-robot-nft-ethereum/bothead-01.svg"
 alt="Base robot"
 style="Width: 60% !important;"/>
 
-Each NFT will have three different colors for its frame, visor and background. Each NFT will also have three different accessories: headgear (a hat or wig), eargear (animal ears or headphones) and facegear (glasses or masks). Some examples:
+Each NFT will have three different colors for its frame, visor, and background. Each NFT will also have three different accessories: headgear (a hat or wig), eargear (animal ears or headphones), and facegear (glasses or masks). Some examples:
 
 <img src="/images/tutorials/42-robot-nft-ethereum/replbot-nft-1.svg"
 alt="NFT 1"
@@ -120,7 +120,7 @@ contract ReplBots is ERC721Enumerable {
 
 In the contract body, we define a `tokenCounter` state variable. This will provide us with unique, incrementing IDs for tokens as they are minted. Solidity automatically initializes all variables to 0, so we don't need to do so explicitly.
 
-Note the use of [`uint256`](https://docs.soliditylang.org/en/v0.8.2/types.html#integers) as the type for these values: because most of the values we deal with in Solidity programs are monetary, we use unsigned integers to avoid storing negative numbers. In versions of Solidity before 0.8.0, this sometimes led to dangerous [overflows](https://medium.com/haloblock/unit-underflows-and-overflows-ethereum-solidity-vulnerability-39a39355c422), but [overflow protection is now built into the language](https://docs.soliditylang.org/en/v0.8.0/080-breaking-changes.html).
+Note the use of [`uint256`](https://docs.soliditylang.org/en/v0.8.2/types.html#integers) as the type for these values: Because most of the values we deal with in Solidity programs are monetary, we use unsigned integers to avoid storing negative numbers. In versions of Solidity before 0.8.0, this sometimes led to dangerous [overflows](https://medium.com/haloblock/unit-underflows-and-overflows-ethereum-solidity-vulnerability-39a39355c422), but [overflow protection is now built into the language](https://docs.soliditylang.org/en/v0.8.0/080-breaking-changes.html).
 
 Next, we have the `constructor()` method, which calls [a parent constructor](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/token/ERC721/ERC721.sol#L44) to define our NFT's name and symbol/stock ticker.
 
@@ -143,13 +143,13 @@ We then define a `mint` function, so that we can create NFTs.
 
 For now, all this does is increment `tokenCounter`, create a new token using [`ERC721._safeMint`](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/token/ERC721/ERC721.sol#L248), and return the numeric ID of the minted NFT. Using `_safeMint` instead of `_mint` will prevent us from minting tokens to a recipient that does not have an implemented method for receiving them. This will prevent our tokens from getting stuck in contract addresses and becoming unusable.
 
-`mint()` is a `public` function, which means it can be called by both external users and by other functions in this contract, or any contracts that inherit from it. Solidity provides granular function and variable visibility options, which are [explained here](https://bitsofco.de/solidity-function-visibility-explained/).
+The `mint()` function is a `public` function, which means it can be called by both external users and by other functions in this contract, or any contracts that inherit from it. Solidity provides granular function and variable visibility options, which are [explained here](https://bitsofco.de/solidity-function-visibility-explained/).
 
 ## NFT data structures
 
 Let's fill out our code skeleton, starting with the data structures we'll need to store information about each NFT we mint. As per our design, each NFT will have three accessories and three colors. We can represent the accessories as strings and the colors as RGB values.
 
-We'll start by defining a string array for each type of accessory. Add the following code above the `constructor` definition.
+We'll start by defining a string array for each type of accessory. Add the following code above the `constructor` definition:
 
 ```solidity
     string[] private headgear = [
@@ -174,7 +174,7 @@ We'll start by defining a string array for each type of accessory. Add the follo
 
 Feel free to draw and add other accessories to these lists.
 
-Next, we'll create a [struct](https://docs.soliditylang.org/en/v0.8.10/types.html#structs) for defining colors. Add this code below your array definitions.
+Next, we'll create a [struct](https://docs.soliditylang.org/en/v0.8.10/types.html#structs) for defining colors. Add this code below your array definitions:
 
 ```solidity
     struct Color {
@@ -184,9 +184,9 @@ Next, we'll create a [struct](https://docs.soliditylang.org/en/v0.8.10/types.htm
     }
 ```
 
-Each color will have a red, green and blue component, represented as an 8-bit unsigned integer. Most unsigned integers we work with in contracts are 256-bit, to the point that Solidity provides the alias `uint` for `uint256`. However, it is good practice to use smaller values where possible, due to gas costs – this is known as [tight variable packing](https://fravoll.github.io/solidity-patterns/tight_variable_packing.html). An 8-bit unsigned integer can contain a value from 0 to 255, which is precisely the range we need for storing standard RGB values.
+Each color will have a red, green, and blue component, represented as an 8-bit unsigned integer. Most unsigned integers we work with in contracts are 256-bit, to the point that Solidity provides the alias `uint` for `uint256`. However, it is good practice to use smaller values where possible, due to gas costs – this is known as [tight variable packing](https://fravoll.github.io/solidity-patterns/tight_variable_packing.html). An 8-bit unsigned integer can contain a value from 0 to 255, which is precisely the range we need for storing standard RGB values.
 
-Next, we'll create a struct for the ReplBot itself, consisting of our three colors and three accessories. Add this code below the previous struct definition.
+Next, we'll create a struct for the ReplBot itself, consisting of our three colors and three accessories. Add this code below the previous struct definition:
 
 ```solidity
     struct ReplBot {
@@ -201,7 +201,7 @@ Next, we'll create a struct for the ReplBot itself, consisting of our three colo
 
 To save space, we'll store our accessory values as indexes in the arrays we defined above. `uint8` allows us to define a maximum of 255 accessories per type, which is more than enough.
 
-Finally, we'll define a [mapping](https://docs.soliditylang.org/en/v0.8.2/types.html#mapping-types) that will allow us to associate numeric token IDs with ReplBot structs. Add this line below your last struct definition.
+Finally, we'll define a [mapping type](https://docs.soliditylang.org/en/v0.8.2/types.html#mapping-types) that will allow us to associate numeric token IDs with ReplBot structs. Add this line below your last struct definition:
 
 ```solidity
     mapping (uint => ReplBot) private replbots;
@@ -249,7 +249,7 @@ Now that we have our data structures in place, we can return to our `mint` funct
 
 The bulk of this code consists of retrieving random numbers and using the [modulo operator](https://en.wikipedia.org/wiki/Modulo_operation) to convert them into a number in the range we need – for colors, this will be a number between 0 and 255, and for accessories, this will be a valid index in the relevant accessory array.
 
-When we define our `Color` structs, we specify the [data location](https://docs.soliditylang.org/en/v0.8.13/types.html?#data-location) `memory`. The data location must be specified for all complex data types: arrays, structs and strings. For variables that are local to a function, `memory` is usually correct. 
+When we define our `Color` structs, we specify the [data location](https://docs.soliditylang.org/en/v0.8.13/types.html?#data-location) `memory`. The data location must be specified for all complex data types: arrays, structs, and strings. For variables that are local to a function, `memory` is usually correct. 
 
 Once that's done, we create the ReplBot struct, assign it to our token ID through the mapping, and then mint the token.
 
@@ -283,9 +283,9 @@ Finally, we convert this hash into an unsigned integer, to be returned as our fi
 
 ## Viewing token data
 
-Now that we can generate tokens with interesting-looking ReplBots, we need a way of retrieving information about them, so that we'll be able to display them on the web3 frontend we'll build in Part 2 of this tutorial. To this end, we'll write two functions: `botAccessories` and `botColors`. These will be externally callable view functions that will take the token ID and return three strings, detailing its accessories and colors, respectively. As external calls to view functions are free, we don't have to worry too much about gas costs in these functions.
+Now that we can generate tokens with interesting-looking ReplBots, we need a way of retrieving information about them, so that we'll be able to display them on the web3 frontend we'll build in Part 2 of this tutorial. To this end, we'll write two functions: `botAccessories` and `botColors`. These will be externally callable view functions that will take the token ID and return three strings, detailing accessories and colors, respectively. As external calls to view functions are free, we don't have to worry too much about gas costs in these functions.
 
-Enter the followed code between the definitions of `mint()` and `_random()`.
+Enter the following code between the definitions of `mint()` and `_random()`:
     
 ```solidity
     function botAccessories(uint256 tokenId) public view returns (string memory, string memory, string memory) { 
@@ -297,7 +297,7 @@ Enter the followed code between the definitions of `mint()` and `_random()`.
     }
 ```
 
-Our function body starts with a [require statement](https://docs.soliditylang.org/en/v0.4.24/control-structures.html#error-handling-assert-require-revert-and-exceptions). This is an error-handling function in Solidity: if the condition in the first argument is not met, the current transaction will revert (undoing all previous actions) and the error message in the second argument will be displayed. In this instance, we're using it to prevent the details of unminted tokens from being queried.
+Our function body starts with a [require statement](https://docs.soliditylang.org/en/v0.4.24/control-structures.html#error-handling-assert-require-revert-and-exceptions). This is an error-handling function in Solidity: If the condition in the first argument is not met, the current transaction will revert (undoing all previous actions) and the error message in the second argument will be displayed. In this instance, we're using it to prevent the details of unminted tokens from being queried.
 
 Once we've confirmed that `tokenId` is valid, we retrieve its associated `ReplBot` struct. Solidity allows us to [return multiple values from a function](https://docs.soliditylang.org/en/v0.8.13/contracts.html?#returning-multiple-values), which we use to return three different strings.
 
@@ -317,7 +317,7 @@ Now let's create `botColors()`. Add the following code below the definition of `
 
 This function is quite similar to `botAccessories()`, but as our colors are structs rather than strings, we will need to define a new function, `_colorToString()` to convert them. Let's do that now.
 
-Add the following code below the definition of `botColors()`.
+Add the following code below the definition of `botColors()`:
 
 ```solidity
     function _colorToString(Color memory color) internal pure returns (string memory) {
@@ -349,18 +349,18 @@ Solidity's [`using Library for type`](https://docs.soliditylang.org/en/v0.8.13/c
 
 ## Testing our contract
 
-Now that we've implemented our NFT's core functionality, it's time to deploy to the Replit testnet and test it out. We'll use our repl's web interface to do this.
+Now that we've implemented our NFT's core functionality, it's time to deploy to the Replit Testnet and test it out. We'll use our repl's web interface to do this.
 
 First, run your repl. Once all of the dependencies are installed, you should see the Replit Ethereum web interface in your repl's browser. It looks like this:
 
 ![REPL Ethereum web interface](/images/tutorials/42-robot-nft-ethereum/repl-eth-web.png)
 
-Connect your MetaMask wallet to the web interface and switch to the Replit testnet. Then click the link to get 1 ETH for testing. Wait until 1 ETH shows up in your wallet balance on the top right of the page.
+Connect your MetaMask wallet to the web interface and switch to the Replit Testnet. Then click the link to get 1 ETH for testing. Wait until 1 ETH shows up in your wallet balance on the top right of the page.
 
 ![Switching to test](/images/tutorials/42-robot-nft-ethereum/switch-to-test.png)
 ![Getting one Ether](/images/tutorials/42-robot-nft-ethereum/get-one.png)
 
-Now you can deploy your contracts. Select "ReplBot" from the drop-down box and click **Deploy**. Approve the MetaMask pop-up that appears.
+Now you can deploy your contracts. Select "ReplBot" from the drop-down box and click "Deploy". Approve the MetaMask pop-up that appears.
 
 Once this contract has been deployed, it will show up as an expandable box below the drop-down box. Expand it and take a look at all the different functions available.
 
@@ -403,7 +403,7 @@ We'll store our bot's generation and both parent IDs. Bots created through `mint
     uint256 public tokenCounter = 1; // no more token 0
 ```
 
-Then we need to add three zeros to the creation of the `ReplBot` struct in `mint()`. Find and edit the line below.
+Then we need to add three zeros to the creation of the `ReplBot` struct in `mint()`. Find and edit the line below:
 
 ```solidity
         // Create bot
@@ -432,9 +432,9 @@ Now we can start on our `breed()` function. Add the following code below the def
     }
 ```
 
-We start our function off with some checks: the two parent IDs must be different, they must be owned by the function caller ([`msg.sender`](https://docs.soliditylang.org/en/v0.8.2/units-and-global-variables.html#block-and-transaction-properties)), and they must be in the same generation.
+We start our function off with some checks: The two parent IDs must be different, they must be owned by the function caller ([`msg.sender`](https://docs.soliditylang.org/en/v0.8.2/units-and-global-variables.html#block-and-transaction-properties)), and they must be in the same generation.
 
-Next comes our bot creation code, which will be similar to the code in our `mint()` function. Add the following code below the final `require()` statement in the `breed` function above.
+Next comes our bot creation code, which will be similar to the code in our `mint()` function. Add the following code below the final `require()` statement in the `breed` function above:
 
 ```solidity
         // Increment token counter
@@ -467,7 +467,7 @@ Next comes our bot creation code, which will be similar to the code in our `mint
         return tokenId;
 ```
 
-All of our bot's colors and attributes are generated according to the breeding process we specified above. One last thing we'll need to do is define the `_meanOfTwo()` function we're using to determine the child bot's colors. Add the following code to the bottom of your contract, just below the definition of `_random()`.
+All of our bot's colors and attributes are generated according to the breeding process we specified above. One last thing we'll need to do is define the `_meanOfTwo()` function we're using to determine the child bot's colors. Add the following code to the bottom of your contract, just below the definition of `_random()`:
 
 ```solidity
     function _meanOfTwo(uint8 first, uint8 second) internal pure returns (uint8) {
@@ -477,7 +477,7 @@ All of our bot's colors and attributes are generated according to the breeding p
 
 Here we convert first and second into `uint16` values to prevent them from overflowing (which would [cause our function to revert](https://docs.soliditylang.org/en/v0.8.13/control-structures.html?#checked-or-unchecked-arithmetic)), divide the result by two, and return it as a `uint8`.
 
-Lastly, we'll need to define a new `view` function to return the generation and parentage of individual tokens. Insert the definition of the following function, `botParentage()`, just below the definition of `botColors()`.
+Lastly, we'll need to define a new `view` function to return the generation and parentage of individual tokens. Insert the definition of the following function, `botParentage()`, just below the definition of `botColors()`:
 
 ```solidity
     function botParentage(uint256 tokenId) public view returns (uint, uint, uint) {
@@ -495,7 +495,7 @@ Compile and deploy your contract as you did before. Because it's a new contract,
 
 Our contract is now fully functional, but there are a few niceties we can add, in the form of [events](https://docs.soliditylang.org/en/v0.8.2/contracts.html#events). Events provide a user-friendly form of logging on the blockchain and are commonly used by dApps. It's considered best practice to emit events whenever a state change is made, so we should define events for our contract's two state-changing actions, minting and breeding.
 
-Event definitions are commonly placed at the bottom of contracts. Add the following code just above your contract's final closing brace (`}`).
+Event definitions are commonly placed at the bottom of contracts. Add the following code just above your contract's final closing brace (`}`):
 
 ```solidity
     event ReplBotCreated(address recipient, uint tokenId);
@@ -524,7 +524,7 @@ And another one near the end of your `breed()` function:
 
 ## Next steps
 
-We're done with our contract code. In the second part of this tutorial, we'll build a dApp frontend for users to mint, view and breed ReplBot NFTs. If you'd like to spend a bit more time exploring Solidity first, here are some ways you might want to change and expand this contract:
+We're done with our contract code. In the second part of this tutorial, we'll build a dApp frontend for users to mint, view, and breed ReplBot NFTs. If you'd like to spend a bit more time exploring Solidity first, here are some ways you might want to change and expand this contract:
 
 * Add more accessories. You'll need to draw these yourself!
 * Refactor the code to reduce the size of the contract and make individual functions more gas efficient. One quick way to do this would be to change the visibility of the `public` functions to `external`.
