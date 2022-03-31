@@ -26,7 +26,7 @@ When you are done editing your project and it is ready to be published, click "P
 
 ![Project publish button](/images/teamsForEducation/project-publish-button.png)
 
-A modal appears, where you can toggle the project between "Published" and "Unpublished".
+A modal appears, where you can toggle the project between "Published" and "Unpublished". You can also toggle this from your team homepage to unlist projects from your team.
 
 ## Submitting Student Work 
 

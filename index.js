@@ -17,6 +17,7 @@ marked.setOptions({
 });
 
 const app = express();
+let tree = null;
 
 const getTree = async () =>
 	JSON.parse((await fs.readFile('./sidebar.json', 'utf8')));
@@ -26,11 +27,11 @@ const render = async (res, category, slug) => {
 	res.locals.rendered = await renderMarkdown(
 		path.join(__dirname, category, slug) + '.md',
 	);
-	const t = await getTree();
-	res.locals.sidebar = t;
+	
+	res.locals.sidebar = tree;
 	res.locals.active = category + '/' + slug;
 
-	const cobj = t.find(c => c.slug === category);
+	const cobj = tree.find(c => c.slug === category);
 	const dobj = cobj? cobj.contents.find(d => d.slug === slug) : {"name": slug}
 
   if (category === 'repls' && slug === 'intro') {
@@ -266,9 +267,132 @@ app.get('/programming-ide/configuring-run-button', async (req, res) => {
     res.redirect(301, '/programming-ide/configuring-repl');
 });
 
-app.get('/teams/it-administrators-toolkit', async (req, res) => {
-	res.redirect(301, '/teams-edu/it-administrators-toolkit');
+// "/teams" => "/teams-edu" redirects
+app.get('/teams/archiving', async (req, res) => {
+  res.redirect(301, '/teams-edu/archiving');
 });
+app.get('/teams/centralized-autograder-java', async (req, res) => {
+  res.redirect(301, '/teams-edu/centralized-autograder-java');
+});
+app.get('/teams/centralized-autograder', async (req, res) => {
+  res.redirect(301, '/teams-edu/centralized-autograder');
+});
+app.get('/teams/centralized-autograder-quickstart-java', async (req, res) => {
+  res.redirect(301, '/teams-edu/centralized-autograder-quickstart-java');
+});
+app.get('/teams/centralized-autograder-quickstart', async (req, res) => {
+  res.redirect(301, '/teams-edu/centralized-autograder-quickstart');
+});
+app.get('/teams/enrichment-homework', async (req, res) => {
+  res.redirect(301, '/teams-edu/enrichment-homework');
+});
+app.get('/teams/faq', async (req, res) => {
+  res.redirect(301, '/teams-edu/faq');
+});
+app.get('/teams/repl-grader-quickstart', async (req, res) => {
+  res.redirect(301, '/teams-edu/repl-grader-quickstart');
+});
+app.get('/teams/sharing', async (req, res) => {
+  res.redirect(301, '/teams-edu/sharing');
+});
+app.get('/teams/simple-autograding-java', async (req, res) => {
+  res.redirect(301, '/teams-edu/simple-autograding-java');
+});
+app.get('/teams/simple-autograding', async (req, res) => {
+  res.redirect(301, '/teams-edu/simple-autograding');
+});
+app.get('/teams/teach-your-kid', async (req, res) => {
+  res.redirect(301, '/teams-edu/teach-your-kid');
+});
+app.get('/teams/assigning-nicknames', async (req, res) => {
+  res.redirect(301, '/teams-edu/assigning-nicknames');
+});
+app.get('/teams/assigning-user-roles', async (req, res) => {
+  res.redirect(301, '/teams-edu/assigning-user-roles');
+});
+app.get('/teams/copying-projects-other-teams', async (req, res) => {
+  res.redirect(301, '/teams-edu/copying-projects-other-teams');
+});
+app.get('/teams/create_solution.gif', async (req, res) => {
+  res.redirect(301, '/teams-edu/create_solution.gif');
+});
+app.get('/teams/creating-projects-assignments', async (req, res) => {
+  res.redirect(301, '/teams-edu/creating-projects-assignments');
+});
+app.get('/teams/curriculum-hub', async (req, res) => {
+  res.redirect(301, '/teams-edu/curriculum-hub');
+});
+app.get('/teams/embedding-projects', async (req, res) => {
+  res.redirect(301, '/teams-edu/embedding-projects');
+});
+app.get('/teams/example-homework-assignments', async (req, res) => {
+  res.redirect(301, '/teams-edu/example-homework-assignments');
+});
+app.get('/teams/exporting-student-submissions', async (req, res) => {
+  res.redirect(301, '/teams-edu/exporting-student-submissions');
+});
+app.get('/teams/google-classroom', async (req, res) => {
+  res.redirect(301, '/teams-edu/google-classroom');
+});
+app.get('/teams/group-projects', async (req, res) => {
+  res.redirect(301, '/teams-edu/group-projects');
+});
+app.get('/teams/input-output-testing', async (req, res) => {
+  res.redirect(301, '/teams-edu/input-output-testing');
+});
+app.get('/teams/intro-teams-education', async (req, res) => {
+  res.redirect(301, '/teams-edu/intro-teams-education');
+});
+app.get('/teams/inviting-teachers-students', async (req, res) => {
+  res.redirect(301, '/teams-edu/inviting-teachers-students');
+});
+app.get('/teams/it-administrators-toolkit', async (req, res) => {
+  res.redirect(301, '/teams-edu/it-administrators-toolkit');
+});
+app.get('/teams/keeping-notes-repls', async (req, res) => {
+  res.redirect(301, '/teams-edu/keeping-notes-repls');
+});
+app.get('/teams/lesson-authoring-tutorial', async (req, res) => {
+  res.redirect(301, '/teams-edu/lesson-authoring-tutorial');
+});
+app.get('/teams/lesson-authoring', async (req, res) => {
+  res.redirect(301, '/teams-edu/lesson-authoring');
+});
+app.get('/teams/organizing-projects', async (req, res) => {
+  res.redirect(301, '/teams-edu/organizing-projects');
+});
+app.get('/teams/privacy-faq', async (req, res) => {
+  res.redirect(301, '/teams-edu/privacy-faq');
+});
+app.get('/teams/project-solutions', async (req, res) => {
+  res.redirect(301, '/teams-edu/project-solutions');
+});
+app.get('/teams/repls-to-team-projects', async (req, res) => {
+  res.redirect(301, '/teams-edu/repls-to-team-projects');
+});
+app.get('/teams/reviewing-submissions', async (req, res) => {
+  res.redirect(301, '/teams-edu/reviewing-submissions');
+});
+app.get('/teams/teams-edu-checklist', async (req, res) => {
+  res.redirect(301, '/teams-edu/teams-edu-checklist');
+});
+app.get('/teams/teams-edu-support', async (req, res) => {
+  res.redirect(301, '/teams-edu/teams-edu-support');
+});
+app.get('/teams/testing-assessments-autograding', async (req, res) => {
+  res.redirect(301, '/teams-edu/testing-assessments-autograding');
+});
+app.get('/teams/unit-testing', async (req, res) => {
+  res.redirect(301, '/teams-edu/unit-testing');
+});
+app.get('/teams/us-student-dpa', async (req, res) => {
+  res.redirect(301, '/teams-edu/us-student-dpa');
+});
+app.get('/teams/using-multiplayer-anonymous-users', async (req, res) => {
+  res.redirect(301, '/teams-edu/using-multiplayer-anonymous-users');
+});
+
+app.get('/teams/Archiving')
 
 app.get('/:category/:slug', async (req, res) => {
 	const { category, slug } = req.params;
@@ -283,6 +407,7 @@ app.get('/:category/:slug', async (req, res) => {
 
 
 
-app.listen(3000, () => {
+app.listen(3000, async () => {
 	console.log('docs are running');
+    tree = await getTree()
 });

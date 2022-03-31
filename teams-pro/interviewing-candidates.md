@@ -25,7 +25,7 @@ Navigate to the "Teams" page. Under "Team Repls", click the "Create team repl" b
     alt="Creating a repl"
     style="width: 80% !important;"/>
 
-Choose the template language you will be using for the interview and give you repl a name, then click the 'Create repl' button. 
+Choose the template language you will be using for the interview and give you repl a name, then click the "Create repl" button. 
 
 Once the repl has been created, you will be able to add the relevant files required for the interview. In this example, we've put the instructions for the candidate to follow during the interview in the `main.py` file.
 
@@ -39,7 +39,7 @@ Once you have written your challenges, invite candidates by clicking on the "Inv
     alt="repl invitation"
     style="width: 90% !important;"/>
 
-You can invite candidates by email or by generating a join link to share with them. Candidates will get a notification of the invite. They will need to sign up for a Replit account before they can accept the invitation.
+You can invite candidates by entering their email address or by generating a join link to share with them. Candidates will get a notification of the invite. They will need to sign up for a Replit account before they can accept the invitation.
 
 
 <img src="/images/teamsPro/interviewing-candidates-tutorial-images/notification.png"
@@ -48,7 +48,7 @@ You can invite candidates by email or by generating a join link to share with th
 
 ## 3. Observe candidates
 
-Once candidates join the interview, they will be able to access the challenges in the provided files in read and write mode.
+Once candidates join the interview repl, they will be able to access the challenges in the provided files in read and write mode.
 
 You can observe the candidates as they complete the challenges. Click on the round icon next to the "Invite" button to observe the candidate's repl and watch them work on their `main.py` file.
 
@@ -62,5 +62,9 @@ Candidates can also view your IDE in the same way. This lets them see the change
 
 To remove candidates from interview repls so they cannot access the interview once it is complete, click on the "Invite" button. In the pop-up window, find the candidate’s name or email.
 
-Click on the "X" next to their name and they will be removed from the interview and will no longer be able to access the link.
+<img src="/images/teamsPro/interviewing-candidates-tutorial-images/remove-candidates.png"
+    alt="remove candidate access"
+    style="width: 90% !important;"/>
+
+Click on the "x" next to their name and they will be removed from the interview rempl. They will no longer be able to access the repl via the invite link.
 

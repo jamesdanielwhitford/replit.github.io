@@ -490,7 +490,11 @@
         "slug": "40-build-host-company-blog-on-replit-with-hugo-nix"
       },
       {
-        "name": "Robot NFT on Ethereum blockchain",
+        "name": "Space Invaders with Kaboom.js",
+        "slug": "41-build-space-invaders-with-kaboom"
+      },
+      {
+         "name": "Robot NFT on Ethereum blockchain",
         "slug": "42-build-a-robot-nft"
       },
       {
