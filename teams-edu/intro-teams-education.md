@@ -15,7 +15,7 @@ A team is a collaborative workspace for teachers and students. The platform is b
 
 If you don't already have an account, sign up at [Replit](https://replit.com). Now click on [Teams](https://replit.com/teams) in the sidebar on the left and choose "new education organization." Give your organiation a name and specifiy if you are a higher education institution or K-12 (secondary school) institution. Choose "create new team organization."
 
-![](/images/teamsForEducation/intro/neweduorg.png) <img src="/images/teamsForEducation/intro/neweduorg.png" width="100" height="80"/>
+<img src="/images/teamsForEducation/intro/neweduorg.png" width="2000" height="1500"/>
 
 
 Now click on "Create team" and choose a team display name and team username. *The team username cannot be changed.*
