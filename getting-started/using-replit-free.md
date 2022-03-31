@@ -33,7 +33,7 @@ For a practical intro to using the multiplayer feature, follow [this tutorial](h
 
 The Teams feature allows you to share all your repls and folders by default. It isn't necessary for teaching, learning, or collaboration on Replit, but it can make it much easier to work with others. 
 
-Teams has a free version that allows for up to ten collaborators. If you need more than this, check out [Teams for Education](/teams-edu/intro-teams-education).
+Teams for Education is now free for all educators. To learn more, check out [Teams for Education](/teams-edu/intro-teams-education).
 
 ## Compliance
 

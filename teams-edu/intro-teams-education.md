@@ -15,10 +15,6 @@ A team is a collaborative workspace for teachers and students. The platform is b
 
 If you don't already have an account, sign up at [Replit](https://replit.com). Now click on [Teams](https://replit.com/teams) in the sidebar on the left and choose the "Education" plan.
 
-![](/images/teamsForEducation/intro/choose-plan.png)
-
-You'll be prompted to input your payment information and confirm the order.
-(Need to pay another way? Email us at [sales@replit.com](mailto:sales@replit.com)!) 
 
 Now click on "Create team" and choose a username for your team.
 
