@@ -254,6 +254,10 @@
         "slug": "managing-public-private-repls"
       },
       {
+        "name": "Internal tools with Flask, SQLite, and Pico.css",
+        "slug": "internal-tools-flask-sqlite-pico"
+      },
+      {
         "name": "Interviewing candidates with guest mode",
         "slug": "interviewing-candidates-guest-mode"
       },
