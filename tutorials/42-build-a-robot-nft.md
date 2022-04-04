@@ -80,7 +80,7 @@ Let's start on our NFT contract code. Open `contract.sol`, delete the file's con
 
 ```solidity
 // // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.13;
+pragma solidity ^0.8.8;
 
 import "@openzeppelin/contracts/token/ERC721/extensions/ERC721Enumerable.sol";
 import "@openzeppelin/contracts/utils/Strings.sol";
@@ -154,7 +154,7 @@ We'll start by defining a string array for each type of accessory. Add the follo
 ```solidity
     string[] private headgear = [
         "Cowboy Hat",
-        "Afro",
+        "Fro",
         "Baseball Cap",
         "Viking Helmet"
     ];
@@ -360,15 +360,32 @@ Connect your MetaMask wallet to the web interface and switch to the Replit Testn
 ![Switching to test](/images/tutorials/42-robot-nft-ethereum/switch-to-test.png)
 ![Getting one Ether](/images/tutorials/42-robot-nft-ethereum/get-one.png)
 
-Now you can deploy your contracts. Select "ReplBot" from the drop-down box and click "Deploy". Approve the MetaMask pop-up that appears.
+Now you can deploy your contracts. Select "ReplBots" from the drop-down box and click "Deploy". Approve the MetaMask pop-up that appears.
+
+![Deploy the contract](/images/tutorials/42-robot-nft-ethereum/deploy.png)
+
+<img src="/images/tutorials/42-robot-nft-ethereum/confirmdeploy.png"
+alt="Confirm deploy"
+style="Width: 50% !important;"/>
+
 
 Once this contract has been deployed, it will show up as an expandable box below the drop-down box. Expand it and take a look at all the different functions available.
 
+<video width="80%" autoplay loop>
+    <source src="/images/tutorials/42-robot-nft-ethereum/expand.mp4" type="video/mp4">
+</video>
+
 Mint your first NFT by navigating to the `mint` function. Click on your wallet address in the top right corner of the page to copy it, and then paste it into the `recipient` field. Then run the function and approve the MetaMask pop-up that appears.
+
+<video width="80%" autoplay loop>
+    <source src="/images/tutorials/42-robot-nft-ethereum/mint.mp4" type="video/mp4">
+</video>
 
 After a few seconds, you should see a pop-up indicating that your transaction has gone through. Congratulations, you're the proud owner of a ReplBot NFT! Check out its colors and accessories by entering ID 0 into `botColors` and `botAccessories`.
 
 If you mint again, you should receive a ReplBot with ID 1 and a different set of colors and accessories.
+
+![Bot colors](/images/tutorials/42-robot-nft-ethereum/botcolors.png)
 
 ## Breeding bots
 
@@ -460,7 +477,7 @@ Next comes our bot creation code, which will be similar to the code in our `mint
         uint8 faceIdx = uint8(_random(tokenId, "asdfg") % facegear.length);
 
         // Create bot
-        replbots[tokenId] = ReplBot(frameCol, visorCol, backgroundCol, headIdx, earIdx, faceIdx, parentOne.generation + 1);          
+        replbots[tokenId] = ReplBot(frameCol, visorCol, backgroundCol, headIdx, earIdx, faceIdx, parentOne.generation + 1, parentOneId, parentTwoId);          
 
         // Mint token
         _safeMint(recipient, tokenId);
