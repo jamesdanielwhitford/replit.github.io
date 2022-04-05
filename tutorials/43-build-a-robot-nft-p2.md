@@ -1,6 +1,6 @@
 # Build a robot NFT on the Ethereum blockchain with Solidity and Replit (part 2)
 
-In the [first part of this tutorial](!!! link tbd), we wrote an Ethereum smart contract for an NFT project called ReplBots – robot profile pictures with randomly generated colors and accessories. This contract allowed users to create ReplBot NFTs on the blockchain and forms the logic portion of our decentralized NFT application. In this second part of the tutorial, we'll create a web front-end for our smart contract, giving users a way to view their NFTs.
+In the [first part of this tutorial](https://docs.replit.com/tutorials/42-build-a-robot-nft), we wrote an Ethereum smart contract for an NFT project called ReplBots – robot profile pictures with randomly generated colors and accessories. This contract allowed users to create ReplBot NFTs on the blockchain and forms the logic portion of our decentralized NFT application. In this second part of the tutorial, we'll create a web front-end for our smart contract, giving users a way to view their NFTs.
 
 By the end of this tutorial, you will know the basics of interacting with wallets and Ethereum smart contracts from JavaScript and building web3 applications.
 
@@ -8,13 +8,16 @@ By the end of this tutorial, you will know the basics of interacting with wallet
 
 Open the repl you created in part one of this tutorial, or clone ours:
 
-!!!part one repl embed
+<iframe height="400px" width="100%" src="https://replit.com/@ritza/ReplBots?embed=true" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>
 
 If you haven't already, [install Metamask](https://metamask.io/download/) in your browser.
 
-Once your repl is loaded, create a new directory named `frontend`. This directory will contain the HTML, JavaScript and image files used for our front-end. Inside this directory, create a second directory named `svg`. Download [this ZIP folder containing our NFT art assets](replbot-art.zip), unzip it and upload its contents to the `svg` directory you just created.
+Once your repl is loaded, create a new directory named `frontend`. This directory will contain the HTML, JavaScript and image files used for our front-end. Inside this directory, create a second directory named `svg`. Download [this ZIP folder containing our NFT art assets](/tutorial-files/robot-nft-p2/replbot-art.zip), unzip it and upload its contents to the `svg` directory you just created.
 
-![](/images/tutorials/43-robot-nft-p2/frontend-svg-dir.png)
+
+<video width="80%" autoplay loop>
+<source src="/images/tutorials/43-robot-nft-p2/frontend-svg-dir.mp4" type="video/mp4">
+</video>
 
 Inside the main `frontend` directory, create the following files:
 
@@ -26,14 +29,14 @@ Before we start populating these files, we need to have a ReplBots contract inst
 
 First, run your repl. Once all of the dependencies are installed, you should see the Replit Ethereum web interface in your repl's browser. It looks like this:
 
-![](/images/tutorials/43-robot-nft-p2/repl-eth-web.png)
+![Replit Ethereum interface](/images/tutorials/43-robot-nft-p2/repl-eth-web.png)
 
 Connect your MetaMask wallet to the web interface and switch to the Replit testnet. If your balance is 0 ETH, click the link marked "Get 1 ETH for testing". Wait until 1 ETH shows up in your wallet balance on the top right of the page.
 
-![](/images/tutorials/43-robot-nft-p2/switch-to-test.png)
-![](/images/tutorials/43-robot-nft-p2/get-one.png)
+![Switching to testnet](/images/tutorials/43-robot-nft-p2/switch-to-test.png)
+![Get one ethereum](/images/tutorials/43-robot-nft-p2/get-one.png)
 
-Now you can deploy your contracts. Select "ReplBot" from the drop-down box and click **Deploy**. Approve the MetaMask pop-up that appears.
+Now you can deploy your contracts. Select "ReplBots" from the drop-down box and click **Deploy**. Approve the MetaMask pop-up that appears.
 
 Once this contract has been deployed, it will show up as an expandable box at the bottom of the page. Next to the contract's name, you'll see a value starting with `0x`: the contract's address. Click on this address to copy it to your clipboard. Then paste it in a safe place, such as the bottom of your repl's `README.md`. 
 
@@ -43,13 +46,14 @@ Next to the contract's address, you should see a button labeled "Copy ABI". Clic
 
 We'll need both of these pieces of data to interact with our contract later on.
 
-!!! Note: the functionality in the above paragraphs is dependent on changes being made to the Solidity Starter repl. This repl's `tools/ui.jsx` contains the changed code.
+
 
 ## Setting up the front-end
 
 Open `frontend/index.html` and populate it with the following markup:
 
 ```html
+<!DOCTYPE html>
 <html>
   <head>
     <title>ReplBot NFTs</title>
@@ -230,7 +234,7 @@ That's all we need to connect to our contract. Now we can implement some of its 
 
 ## Running contract functions
 
-We'll start by implementing some functions in `App` to get information from the contract. This first one, `getMyReplBotIds`, will return a list of ReplBots in the current user's wallet. Add the following code to the bottom of the definition of `App`.
+We'll start by implementing some functions in `App` to get information from the contract. This first one, `getMyReplBotIds`, will return a list of ReplBots in the current user's wallet. Add the following code within the definition of `App` at the bottom.
 
 ```javascript
     // view data in contract
@@ -252,7 +256,7 @@ We'll start by implementing some functions in `App` to get information from the 
     },
 ```
 
-In this function, we use [`web3.eth.getAccounts()`](https://web3js.readthedocs.io/en/v1.7.1/web3-eth.html#getaccounts) to find the user's wallet address, which we use in subsequent calls to `balanceOf()` and `tokenOfOwnerByIndex()`. Both of these functions are part of the [ERC-721 NFT standard](https://eips.ethereum.org/EIPS/eip-721) (although the latter belongs to an optional extension, `ERC721Enumberable`) and are implemented by the OpenZeppelin contract our ReplBots contract inherits from. Note the syntax for calling a contract method.
+In this function, we use [`web3.eth.getAccounts()`](https://web3js.readthedocs.io/en/v1.7.1/web3-eth.html#getaccounts) to find the user's wallet address, which we use in subsequent calls to `balanceOf()` and `tokenOfOwnerByIndex()`. Both of these functions are part of the [ERC-721 NFT standard](https://eips.ethereum.org/EIPS/eip-721) (although the latter belongs to an optional extension, `ERC721Enumerable`) and are implemented by the OpenZeppelin contract our ReplBots contract inherits from. Note the syntax for calling a contract method using `call()`.
 
 Next, let's implement a function that returns details about a given ReplBot. Add the following code below the definition of `getMyReplBotIds()`.
 
@@ -302,7 +306,7 @@ Most common image files, such as JPEGs and PNGs, are [raster graphics](https://e
 
 Both image formats have their advantages and disadvantages – a relevant advantage to SVGs is that they're formatted a lot like HTML files, so it's pretty simple to manipulate them programmatically in JavaScript. To see what an SVG looks like under the hood, rename one of the files in `frontend/svg` from `.svg` to `.html`.
 
-![](frontend/svg/svg-inside.png)
+![SVG inside](/images/tutorials/43-robot-nft-p2/svg-inside.png)
 
 As you can see, an SVG is made up of a whole lot of XML tags. It even includes CSS for styling, inside the `<defs>` tag – we'll use this to change colors. When you're done looking at the file, change its file extension back to `.svg`.
 
@@ -327,7 +331,7 @@ Now we have everything we need to write our SVG construction function. This func
 2. Fetch SVGs for the ReplBot's head and change its colors per the ReplBot's details.
 3. Fetch SVGs for the ReplBot's accessories and merge them with the ReplBot head.
 
-Add the code below to the bottom of your `App` definition.
+Add the code below within your `App` definition at the bottom.
 
 ```javascript
     // SVG handling
@@ -370,7 +374,7 @@ Next, we need to get the bot's accessories. Add the following code above this fu
 
 Here we fetch each of the bot's three accessories and add them to a list. We get the filename for the accessory by transforming the string we received from `getReplBotDetails()`. So, for example, "Bunny Ears" becomes "bunny-ears.svg".
 
-Once we've got our accessory SVGs, we can merge them into the base ReplBot SVG. Enter the following code after the end of the `for` loop above.
+Once we've got our accessory SVGs, we can merge them into the base ReplBot SVG. Enter the following code just below the `for` loop above.
 
 ```javascript
         // merge SVGs
@@ -392,7 +396,7 @@ Once we've got our accessory SVGs, we can merge them into the base ReplBot SVG. 
 
 We merge SVGs by appending all of `<style>` elements in our accessory SVG to the `<defs>` element in our base ReplBot SVG, and all of the accessory's `<path>` and `<polyline>` elements to the SVG's main body. This is sufficient for the collection of SVGs we're using for this tutorial, but other SVGs may have additional elements that you'll need to account for.
 
-Finally, we'll add the following code that uses [`insertAdjacentHTML()`](https://developer.mozilla.org/en-US/docs/Web/API/Element/insertAdjacentHTML) to add details about the ReplBot's ID and generation before returning the final `botSvg` in all its glory.
+Finally, we'll add the following code that uses [`insertAdjacentHTML()`](https://developer.mozilla.org/en-US/docs/Web/API/Element/insertAdjacentHTML) to add details about the ReplBot's ID and generation before returning the final `botSvg` in all its glory. Add the following code just below the code above.
 
 ```javascript
         // add ID and generation details
@@ -461,7 +465,7 @@ Next, let's create a function to display our NFT collection. This function will 
                 botContainer.appendChild(result);
             });
         });
-    }
+    },
 ```
 
 We'll want to call this function periodically to keep our ReplBot collection up to date. We can use JavaScript's `setInterval` for this. Add a new line to the definition of `bindEvents` as below.
@@ -483,7 +487,7 @@ We'll want to call this function periodically to keep our ReplBot collection up 
         });
 
         // show collection
-        setInterval(App.populateCollection, 1000); // <-- new line
+        setInterval(App.populateCollection, 5000); // <-- new line
     },
 ```
 
@@ -491,9 +495,11 @@ This will work, but it will recreate all of our SVGs once per second, which will
 
 ```javascript
 App = {
-    replbotAddress: "YOUR-CONTRACT-ADDRESS",
-    replbotContract: null,
-    ownedReplBots: [], // <-- NEW
+  replbotAddress: "YOUR-CONTRACT-ADDRESS",
+  replbotContract: null,
+  ownedReplBots: [], // <-- NEW
+  ....
+}
 ```
 
 This attribute will store our list of ReplBot IDs. Every time we call `populateCollection`, we'll first check whether the list we get from the contract matches our local list. If it does, we'll skip the rest of the function, otherwise, we'll update the cache and continue. Add the following new code to the `populateCollection` function:
@@ -523,7 +529,7 @@ This attribute will store our list of ReplBot IDs. Every time we call `populateC
                 botContainer.appendChild(result);
             });
         });
-    }
+    },
 ```
 
 Note the use of [`slice()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/slice) – this will ensure that `ownedReplBots` contains a copy of `botIds` rather than a reference to it.
@@ -556,7 +562,7 @@ This function checks that our two arrays are the same length, sorts them and the
 
 # Running our application
 
-To run our frontend, we'll create a simple [Node.js Express](https://expressjs.com/) application. Create a file named `frontend.js` in your repl and add the following code to it:
+To run our frontend, we'll create a simple [Node.js Express](https://expressjs.com/) application. Create a file named `frontend.js` at the home directory of your repl and add the following code to it:
 
 ```javascript
 const express = require('express');
@@ -570,7 +576,9 @@ app.listen(PORT, () => console.log(`Server listening on port: ${PORT}`));
 
 This script will serve the files we created in `frontend`. To make it execute when we run our repl, make sure that config files are showing and open `.replit`.
 
-![](/images/tutorials/43-robot-nft-p2/show-config.png)
+<video width="80%" autoplay loop>
+<source src="/images/tutorials/43-robot-nft-p2/show-config.mp4" type="video/mp4">
+</video>
 
 In `.replit`, replace the line `run = "node tools"` with the following:
 
@@ -580,7 +588,7 @@ run = "node frontend.js"
 
 Run your repl. You should now see your frontend. If you've minted any ReplBot NFTs already, those will also show up.
 
-![](/images/tutorials/43-robot-nft-p2/final-dapp.png)
+![Completed app](/images/tutorials/43-robot-nft-p2/final-dapp.png)
 
 ## Where next?
 
@@ -595,4 +603,5 @@ In this two-part tutorial, we've built a fully functional decentralised applicat
 
 Your can find our repl below:
 
-!!! repl embed
+<iframe height="400px" width="100%" src="https://replit.com/@ritza/ReplBotsPart2?embed=true" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>
+
