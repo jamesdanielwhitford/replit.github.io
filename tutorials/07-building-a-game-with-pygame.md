@@ -110,7 +110,7 @@ PyGame records all "events", including mouse clicks, and makes these available t
 
 If the user clicks on an empty space, that will still be recorded but we will simply ignore it. If the user clicks on a falling ball, we want it to change direction.
 
-Right after the `while True` loop, add the following lines of code.
+At the start of the loop, right after the line that reads `while True`, add the following lines of code.
 
 ```python
         for event in pygame.event.get():
