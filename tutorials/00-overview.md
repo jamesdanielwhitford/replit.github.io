@@ -53,9 +53,9 @@ Do you want to develop games? Of course, you can do that with Replit to. We'll b
 
 Have you been hacked? It's only a matter of time if you haven't. Learn how to keep your secrets safe, even when coding in public spaces. Pro tip: if you accidentally paste a password into your code and then remove it, others might still find it in your history, so you'll learn how to navigate that too.
 
-#### [Lesson 9: Building a web application with TDD](./09-test-driven-development)
+#### [Lesson 9: Creating a name splitting application using test driven development](./09-test-driven-development)
 
-It's time to put everything we have learned together. You'll build a full web application: backend, frontend and database, using Flask. And we'll follow test-driven-development best-practices along the way so you can be sure your code does what you think it does.
+Build a system to split users' names into first name and last name. We'll follow test-driven-development best-practices along the way so you can be sure your code does what you think it does.
 
 #### [Lesson 10: Become an elite hacker with productivity hacks](./10-productivity-hacks)
 

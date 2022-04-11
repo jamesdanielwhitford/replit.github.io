@@ -163,7 +163,7 @@ The `url` should be the one that you copied from GitHub in the previous step. Yo
 
 ![**Image 11:** *Modifying `pyproject.toml` to explicitly point to the model allows our application to find it and use it*](/images/tutorials/03-handling-dependecies/03-11-pyproject-toml.png)
 
-At this point that we should also check that we are using an appropriate version of `spaCy`. We are using version *2.3.2*, which is in the allowed range for the model release (>=2.3.0, <2.4.0) , so we do not need to modify this.
+At this point we should also check that we are using an appropriate version of `spaCy`. We are using version *2.3.2*, which is in the allowed range for the model release (>=2.3.0, <2.4.0) , so we do not need to modify this.
 
 Finally, hit the `run` button. This will cause your configuration files to be updated and then will run your application. If everything has gone correctly, you should see the following in the output pane once it completes.
 

@@ -67,7 +67,7 @@ from namesplitter.utils import name_helper
 def test_two_names():
     assert name_helper.split_name("John Smith") == ["John", "Smith"]
 ```
-Note that the `namesplitter` in the first line is taken from the name of your Replit project, which defines the names of the parent module. If you called your project something else, you'll need to use that name in the import line. It's important to not include special characters in the project name (including a hyphen, so names like `my-tdd-demo` are out) or the import won't work.
+Note that the `namesplitter` in the first line is taken from the name of your Replit project, which defines the names of the parent module. If you called your project something else, you'll need to use that name in the import line. It's important to not put special characters in the project name (including a hyphen, so names like `my-tdd-demo` are out) or the import won't work.
 
 The `assert` keyword simply checks that a specific statement evaluates to `True`. In this case, we call our function on the left-hand side and give the expected value on the right-hand side, and ask `assert` to check if they are the same.
 
