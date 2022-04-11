@@ -67,7 +67,7 @@ To add authentication to our Flask app, add the following within the **body** of
 
 ```html
 <div>
-	<script authed="location.reload()" src="https://auth.turbio.repl.co/script.js"></script>
+	<script authed="location.reload()" src="https://auth.util.repl.co/script.js"></script>
 </div>
 ```
 
@@ -114,7 +114,7 @@ Open the `index.html` file and replace the body with the following:
 	{% else %}
 	Hello! Please log in.
 	<div>
-		<script authed="location.reload()" src="https://auth.turbio.repl.co/script.js"></script>
+		<script authed="location.reload()" src="https://auth.util.repl.co/script.js"></script>
 	</div>
 	{% endif %}
 </body>

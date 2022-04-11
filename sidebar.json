@@ -590,6 +590,24 @@
         "slug": "makes-js-games"
       }
     ]
+  },
+  {
+    "name": "HTML Tutorials",
+    "slug": "html",
+    "contents": [
+      {
+        "name": "HTML Introduction",
+        "slug": "html-intro"
+      },
+      {
+        "name": "HTML Basic Examples",
+        "slug": "html-basic"
+      },
+      {
+        "name": "HTML Elements",
+        "slug": "html-elements"
+      }
+    ]
   }
 ]
 

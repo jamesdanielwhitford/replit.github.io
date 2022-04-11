@@ -17,3 +17,4 @@ Miscellaneous : misc
 Tutorials : tutorials
 Teaching Curriculum : teaching-curriculum
 Replit Books : replit-books
+HTML Tutorials : html-tutorials

@@ -1,6 +1,10 @@
 # Configuring a Repl
 
-A file named `.replit` can be added to any repl in order to customize the behavior of the repl. Used in combination with [nix](/programming-ide/getting-started-nix) for installed linux packages, the sky is the limit! Written in [toml](https://github.com/toml-lang/toml), a `.replit` file looks something like:
+A file named `.replit` can be added to or edited in any repl in order to customize the behavior of the repl. Used in combination with [nix](/programming-ide/getting-started-nix) for installed linux packages, the sky is the limit! 
+
+Many repls are preconfigured with a `.replit` file which can be found by clicking the three dot menu in the file tree and selecting `Show hidden files`.
+
+Written in [toml](https://github.com/toml-lang/toml), a `.replit` file looks something like:
 
 ```toml
 # The command that is executed when the run button is clicked.
