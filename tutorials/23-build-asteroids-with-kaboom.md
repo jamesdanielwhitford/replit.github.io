@@ -91,8 +91,8 @@ scene("main", ()=> {
     "obj",
     "ui",
   ], "obj");
-
-  // add more scene code here
+  
+  // add more scene code here 
 });
 
 go("main");
@@ -254,7 +254,7 @@ At a high level, we want to move a given distance (`player.speed`) in a given di
 // Movement
 onUpdate("mobile", (e) => {
   e.move(pointAt(e.speed, e.angle));
-});
+});   
 ```
 
 First, we move our object, using the function `pointAt()`, which takes a speed and an angle and returns the corresponding X and Y co-ordinates as a [`vec2`](https://kaboomjs.com/doc#vec2) object, Kaboom's 2D vector type. This data type is provided by Kaboom specifically for working with X and Y coordinates, and comes with a number of useful functions, such as addition and subtraction.
@@ -349,17 +349,6 @@ onDraw("player", (p) => {
     });
   }
 });
-
-/*
-NOTE: starting from kaboom v2000.2 the coordinate system in onDraw("player") will be relative to the current "player" object, it's an unintended breaking change but will be the default behavior starting on the next major release. If you're on v2000.2, change the drawSprite code to
-
-drawSprite( {
-    sprite: thrust_animation[p.animation_frame],
-    // use a fixed position because it's going to be relative to the current player's coordinate system
-    pos: vec2(-p.width / 2, 0),
-    origin: "center",
-});
-*/
 ```
 
 Here we're using our `pointAt` function again, but this time we're looking for the rocket end of the ship, rather than its nose. We use our `thrust_animation` array in conjunction with the player's `animation_frame` value to figure out which rocket image to draw.
@@ -483,7 +472,7 @@ for (let i = 0; i < NUM_ASTERIODS; i++) {
     ]);
 
     a.pushOutAll();
-
+    
 }
 ```
 
@@ -697,7 +686,7 @@ on("destroy", "asteroid", (a) => {
 
         // small asteroids move out from the center of the explosion
         rotations = [16,34,65,87];
-
+    
         for (let i = 0; i < positions.length; i++) {
             var s = add([
                 sprite(`asteroid_small${i+1}`),
@@ -758,7 +747,7 @@ player.on("damage", () => {
     {
         // Temporary invulnerability
         player.invulnerable = true;
-
+    
         wait(player.invulnerablity_time, () => {
             player.invulnerable = false;
             player.hidden = false;
@@ -783,7 +772,7 @@ onUpdate(() => {
   }
 
   // new if statement
-  if (player.invulnerable) {
+  if (player.invulnerable) {  
     player.hidden = !player.hidden;
   }
 });
