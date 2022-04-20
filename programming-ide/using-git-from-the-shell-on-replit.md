@@ -10,13 +10,13 @@ The shell helps us manage our files, allowing us to enter commands to add or rem
 
 
 First, create a new repl
-![](img1.png)
+![new repl](images/programming-ide/debugging/using-git-from-the-shell-on-replit/new-repl.png "new repl")
 
 In the new repl dialog, click on `Import from GitHub` in the top right corner and paste the URL of your GitHub project into the `GitHub URL` field
 
-![](img2.png)
+![new repl 2](images/programming-ide/debugging/using-git-from-the-shell-on-replit/new-repl-2.png "new repl 2")
 
-![](img3.png)
+![import](images/programming-ide/debugging/using-git-from-the-shell-on-replit/import.png "import")
 
 
 Click the blue `Import from GitHub` button at the bottom, and Replit will clone your project and create your repl.
@@ -54,7 +54,7 @@ git add README.md
 git commit -m "Update README.md"
 ```
 
-![](img5.png)
+![update readme](images/programming-ide/debugging/using-git-from-the-shell-on-replit/update-readme.png "update readme")
 
 When we commit the file we save the changes we made to our file to the local repository. The ``` -m``` is for the commits message, which is what we would like to have committed in the file. 
 
@@ -85,16 +85,16 @@ ssh-keygen
 ```
 And you will get the following as a response:
 
-![](img6.png)
+![ssh keygen](images/programming-ide/debugging/using-git-from-the-shell-on-replit/ssh-keygen.png "ssh keygen")
 At this stage, you should click enter and leave this step to default and it will save it to ```/home/runner/.ssh/id_rsa.pub```  and it will then create a directory for you
 
-![](img7.png)
+![created a directory](images/programming-ide/debugging/using-git-from-the-shell-on-replit/created-directory.png "created a directory")
 Press enter to leave passphrase empty. 
 
  So both times you are asked for a passphrase you would just leave it empty twice and your screen should look like this:
 
 
-![](img8.png)
+![passphrase](images/programming-ide/debugging/using-git-from-the-shell-on-replit/passphrase.png "passphrase")
 Your public key will then be saved.
 
 
@@ -104,7 +104,7 @@ Next, we can run ```cat``` so we can view the public key that we created.
 cat ~/.ssh/id_rsa.pub
 ```
 After running this command your ssh key will be displayed as follows
-![](img10.png)
+![display key](images/programming-ide/debugging/using-git-from-the-shell-on-replit/display-key.png "display key")
 
 
 
@@ -115,7 +115,7 @@ After running this command your ssh key will be displayed as follows
 So now that we have our ssh key we need to add it to our GitHub. In your GitHub profile under your project, you will go to your settings and look for the security section, look for the Deploy Key section and follow the numbering by adding the ssh key and giving it a name 
 
 
-![](imgscreen.png)
+![Deploy keys screen](images/programming-ide/debugging/using-git-from-the-shell-on-replit/imgscreen.png "Deploy keys screen")
 
 
 
@@ -131,18 +131,18 @@ git commit -m "Update README.md"
 This will be the output of this command: 
 
 
-![](img12.png)
+![git commit](images/programming-ide/debugging/using-git-from-the-shell-on-replit/git-commit.png "git commit")
 
 Lastly, we will go ahead and add the command to push the file back onto GitHub with:
 ```python
 git push
 ```
 
-![](img13.png)
+![git push](images/programming-ide/debugging/using-git-from-the-shell-on-replit/git-push-1.png "git push")
 
 And there we have successfully pushed the file back onto GitHub with all our changes. 
 
-![](img15.png)
+![git demo](images/programming-ide/debugging/using-git-from-the-shell-on-replit/git-demo.png "git demo")
 
 
 
