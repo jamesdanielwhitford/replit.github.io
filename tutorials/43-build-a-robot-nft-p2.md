@@ -38,9 +38,9 @@ Connect your MetaMask wallet to the web interface and switch to the Replit testn
 
 Now you can deploy your contracts. Select "ReplBots" from the drop-down box and click **Deploy**. Approve the MetaMask pop-up that appears.
 
-Once this contract has been deployed, it will show up as an expandable box at the bottom of the page. Next to the contract's name, you'll see a value starting with `0x`: the contract's address. Click on this address to copy it to your clipboard. Then paste it in a safe place, such as the bottom of your repl's `README.md`. 
+Once this contract has been deployed, it will show up as an expandable box. If you expand the deployed contract, at the bottom, you'll see a value starting with `0x`: the contract's address. Click on this address to copy it to your clipboard. Then paste it in a safe place, such as the bottom of your repl's `README.md`. 
 
-![](/images/tutorials/43-robot-nft-p2/copy-addr.png)
+![Copy contract address](/images/tutorials/43-robot-nft-p2/copy-addr.png)
 
 Next to the contract's address, you should see a button labeled "Copy ABI". Click on this button to copy the contract's ABI ([Application Binary Interface](https://docs.soliditylang.org/en/v0.8.13/abi-spec.html)) to your clipboard, and paste it into the same place you put the contract address. You should see a large JSON object.
 
