@@ -9,7 +9,7 @@
 
 A team is a collaborative workspace for teachers and students. The platform is based around projects, which give students real-world experience. Each project can have multiple versions (often, one for each student or group), so students can all start from the same point, but extend the base project in different ways.
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/hCgGzIUJtY4" title="Intro to Teams for Education" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/NJjDFJbUzdM" title="Intro to Teams for Education" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 ## How to Sign Up
 

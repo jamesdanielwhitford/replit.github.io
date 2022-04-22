@@ -11,6 +11,7 @@ Read more about [our commitment to user safety](https://docs.google.com/document
 To make sure Replit works for you and your students on your school network, you need to ensure the following domains are whitelisted/unblocked:
 - `*.replit.com` (primary domain)
 - `*.repl.co` (where web applications built on Replit are hosted)
+  - *to block access to webpages through Replit, you may block `repl.co` **only**, but this will impact students' ability to run and preview HTML projects*
 - `*.repl.it` (old domain, not actively used)
 - `*.replitusercontent.com` (old domain, not actively used)
 

@@ -349,6 +349,17 @@ onDraw("player", (p) => {
     });
   }
 });
+
+/*
+NOTE: starting from kaboom v2000.2 the coordinate system in onDraw("player") will be relative to the current "player" object, it's an unintended breaking change but will be the default behavior starting on the next major release. If you're on v2000.2, change the drawSprite code to
+
+drawSprite( {
+    sprite: thrust_animation[p.animation_frame],
+    // use a fixed position because it's going to be relative to the current player's coordinate system
+    pos: vec2(-p.width / 2, 0),
+    origin: "center",
+});
+*/
 ```
 
 Here we're using our `pointAt` function again, but this time we're looking for the rocket end of the ship, rather than its nose. We use our `thrust_animation` array in conjunction with the player's `animation_frame` value to figure out which rocket image to draw.

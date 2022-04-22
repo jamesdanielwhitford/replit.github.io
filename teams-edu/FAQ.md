@@ -2,7 +2,7 @@
 
 ##### How do I get started with Teams for Education?
 
-[Here](https://www.youtube.com/watch?v=hCgGzIUJtY4) is an introduction tutorial on Teams for Education.
+[Here](https://www.youtube.com/watch?v=NJjDFJbUzdM) is an introduction tutorial on Teams for Education.
 
 
 ##### How do I manage team members in a team?
