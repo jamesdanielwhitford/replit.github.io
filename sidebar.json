@@ -69,6 +69,10 @@
       {
         "name": "Debugging",
         "slug": "debugging"
+      },
+      {
+        "name": "Git shell on Replit",
+        "slug": "using-git-from-the-shell-on-replit"
       }
     ]
   },
