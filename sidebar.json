@@ -69,6 +69,14 @@
       {
         "name": "Debugging",
         "slug": "debugging"
+      },
+      {
+        "name": "Using Git with Replit",
+        "slug": "git-with-replit"
+      },
+      {
+        "name": "Git Commands Reference Guide",
+        "slug": "git-commands-reference-guide"
       }
     ]
   },
