@@ -204,7 +204,7 @@ db["my_dictionary"] = {"key_a": "value_a", "key_b": "value_b"}
 # Printing all the keys from our database
 print(db.keys())
 ```
-#### Output
+#### Output:
 ```
 {'key1', 'my_list', 'my_dictionary', '2D_keys'}
 ```
@@ -222,7 +222,7 @@ db["my_dictionary"] = {"key_a": "value_a", "key_b": "value_b"}
 # Printing all the keys from our database that have a prefix of "my"
 print(db.prefix("my"))
 ```
-#### Output
+#### Output:
 ```
 ('my_dictionary', 'my_list')
 ```
@@ -240,7 +240,7 @@ print(db[“float_1”])
 db[“float_1”] = 3.33
 print(db[“float_1”)
 ```
-#### Output
+#### Output:
 ```
 9.99
 3.33
@@ -260,7 +260,7 @@ db["float_1"] += 0.01
 # Printing result of operation
 print(db["float_1"])
 ```
-#### Output
+#### Output:
 ```
 10.0
 ```
@@ -280,7 +280,7 @@ if "float_1" not in db:
 	print("Value deleted successfully.")
 ```
 
-#### Output
+#### Output:
 ```
 Value deleted successfully.
 ```
@@ -402,7 +402,7 @@ cursor_object = connection.execute("SELECT * FROM My_library")
 print(cursor_object.fetchall())
 ```
 
-#### Output
+#### Output:
 ```
 [(1, 'Steve Biko', 'I write what I like.'), (2, 'Lewis Carrol', "Alice's Trip in Wonderland")
 ```
