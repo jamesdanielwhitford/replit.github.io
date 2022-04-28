@@ -109,6 +109,10 @@
         "slug": "strike-system-faq"
       },
       {
+        "name": "Using a Database",
+        "slug": "using-a-database"
+      },
+      {
         "name": "Database FAQ",
         "slug": "database-faq"
       }
